@@ -44,3 +44,4 @@ function showContent(contentId) {
     });
     document.getElementById(contentId).style.display = 'block';
 }
+
