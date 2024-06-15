@@ -1,16 +1,16 @@
-document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    document.getElementById('login-page').style.display = 'none';
-    document.getElementById('dashboard-page').style.display = 'flex';
-    showContent('sip-content');
+document.getElementById("login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    document.getElementById("login-page").style.display = "none";
+    document.getElementById("dashboard-page").style.display = "flex";
+    showContent("sip-content");
 });
 
-document.getElementById('sip-link').addEventListener('click', function() {
-    showContent('sip-content');
+document.getElementById("sip-link").addEventListener("click", function() {
+    showContent("sip-content");
 });
 
-document.getElementById('dashboard-link').addEventListener('click', function() {
-    showContent('dashboard-content');
+document.getElementById("dashboard-link").addEventListener("click", function() {
+    showContent("dashboard-content");
 });
 
 document.getElementById('registration-link').addEventListener('click', function() {
@@ -44,4 +44,3 @@ function showContent(contentId) {
     });
     document.getElementById(contentId).style.display = 'block';
 }
-
