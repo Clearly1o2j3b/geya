@@ -18,333 +18,283 @@
       <button type="submit">Login</button>
     </form>
   </div>
-    <div id="dashboard-page" class="dashboard" style="display: none;">
-        <div class="sidebar">
-            <div class="profile-section">
-                <img src="https://i.ibb.co/XFGsCrW/download.jpg" alt="Profile Picture" class="profile-picture">
-                <p>ID: Kelvin Bright Baidoo</p>
-            </div>
-            <a href="#" id="sip-link">Welcome</a>
-            <a href="#" id="dashboard-link">Dashboard</a>
-            <a href="#" id="registration-link">Registration</a>
-            <a href="#" id="statement-link">Statement of Results</a>
-            <a href="#" id="message-link">Messages</a>
-            <a href="#" id="timetable-link">Timetable</a>
-            <a href="#" id="awards-link">Awards</a>
-            <a href="#" id="fees-link">Fees and Accommodation</a>
-        </div>
-        <div class="content">
-            <div id="sip-content" class="content-section">
-                <h2>Welcome to Student Portal</h2>
-                <img src="https://i.ibb.co/gSmdS6L/bayloruniversity-green-jpg.jpg" alt="Baylor University Logo" class="large-logo">
-                <div class="news-section">
-                    <h3>Latest News</h3>
-                    <div class="news-item">
-                        <img src="https://via.placeholder.com/100" alt="News Image">
-                        <p><strong>Title:</strong> Baylor College Celebrates 175th Anniversary</p>
-                        <p><strong>Description:</strong> Join us in celebrating 175 years of academic excellence and innovation.</p>
-                    </div>
-                    <div class="news-item">
-                        <img src="https://via.placeholder.com/100" alt="News Image">
-                        <p><strong>Title:</strong> New Medical Research Facility Opens</p>
-                        <p><strong>Description:</strong> Our new state-of-the-art facility aims to advance medical research and education.</p>
-                    </div>
-                    <div class="news-item">
-                        <img src="https://via.placeholder.com/100" alt="News Image">
-                        <p><strong>Title:</strong> Student Achievements Recognized</p>
-                        <p><strong>Description:</strong> Congratulations to our students for their outstanding achievements this semester.</p>
-                    </div>
-                    <!-- Add more news items as needed -->
-                </div>
-            </div>
-            <div id="dashboard-content" class="content-section" style="display: none;">
-                <h2>Dashboard</h2>
-                <p>Welcome to your dashboard, Kelvin Bright Baidoo!</p>
-                <p>Major: Bachelor of Medicine</p>
-                <p>Teal Hall</p>
-                <p>GPS: 31.5493° N, 97.1143° W</p>
-                <p>Postal Address: One Bear Place #97056, Waco, TX 76798-7056, USA</p>
-            </div>
-            <div id="registration-content" class="content-section" style="display: none;">
-                <h2>Course Registration</h2>
-                <form id="registration-form">
-                    <div class="form-group">
-                        <label for="course-code">Course Code:</label>
-                        <input type="text" id="course-code" placeholder="e.g., MED101" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="course-name">Course Name:</label>
-                        <input type="text" id="course-name" placeholder="e.g., Human Anatomy" required>
-                    </div>
-                    <button type="submit">Register Course</button>
-                </form>
-            </div>
-            <div id="statement-content" class="content-section" style="display: none;">
-                <h2>Statement of Results</h2>
-                <h3>Spring Semester</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Code</th>
-                            <th>Course Title</th>
-                            <th>Credit</th>
-                            <th>Grade</th>
-                            <th>GP</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>MED101</td>
-                            <td>Human Anatomy</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED102</td>
-                            <td>Biochemistry</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED103</td>
-                            <td>Physiology</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED104</td>
-                            <td>Pathology</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED105</td>
-                            <td>Pharmacology</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED106</td>
-                            <td>Microbiology</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED107</td>
-                            <td>Genetics</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">Total Credit Hours</td>
-                            <td>21</td>
-                            <td></td>
-                            <td>84</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <p><strong>GPA:</strong> 4.0</p>
-                <p><strong>Cumulative GPA:</strong> 4.0</p>
-
-                <h3>Summer Semester</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Code</th>
-                            <th>Course Title</th>
-                            <th>Credit</th>
-                            <th>Grade</th>
-                            <th>GP</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>MED201</td>
-                            <td>Advanced Human Anatomy</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED202</td>
-                            <td>Advanced Biochemistry</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED203</td>
-                            <td>Advanced Physiology</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED204</td>
-                            <td>Clinical Pathology</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>MED205</td>
-                            <td>Advanced Pharmacology</td>
-                            <td>3</td>
-                            <td>A</td>
-                            <td>12</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">Total Credit Hours</td>
-                            <td>15</td>
-                            <td></td>
-                            <td>60</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <p><strong>GPA:</strong> 4.0</p>
-                <p><strong>Cumulative GPA:</strong> 4.0</p>
-            </div>
-            <div id="message-content" class="content-section" style="display: none;">
-                <h2>Messages</h2>
-                <p>No new messages.</p>
-            </div>
-            <div id="timetable-content" class="content-section" style="display: none;">
-                <h2>Timetable</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Day</th>
-                            <th>Time</th>
-                            <th>Course</th>
-                            <th>Location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Monday</td>
-                            <td>9:00 AM - 11:00 AM</td>
-                            <td>Human Anatomy</td>
-                            <td>Room 101, Baylor Hall</td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>10:00 AM - 12:00 PM</td>
-                            <td>Biochemistry</td>
-                            <td>Room 202, Baylor Hall</td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td>11:00 AM - 1:00 PM</td>
-                            <td>Physiology</td>
-                            <td>Room 303, Baylor Hall</td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td>1:00 PM - 3:00 PM</td>
-                            <td>Pathology</td>
-                            <td>Room 404, Baylor Hall</td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td>2:00 PM - 4:00 PM</td>
-                            <td>Pharmacology</td>
-                            <td>Room 505, Baylor Hall</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div id="awards-content" class="content-section" style="display: none;">
-                <h2>Awards</h2>
-                <ul>
-                    <li>Best Student in Medicine</li>
-                    <li>Best Microbiology Student in the School</li>
-                    <li>Best Presentation in Public Health</li>
-                    <li>Outstanding Academic Achievement</li>
-                    <li>Excellence in Research</li>
-                    <li>Top Scholar Award</li>
-                </ul>
-            </div>
-            <div id="fees-content" class="content-section" style="display: none;">
-                <h2>Fees and Accommodation</h2>
-                <h3>School Fees</h3>
-                <p>Total Fees: $80,000 per year</p>
-                <h3>Accommodation</h3>
-                <p>Total Accommodation Fees: $4,000 per year</p>
-                <h3>Payment History</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Description</th>
-                            <th>Amount Paid</th>
-                            <th>Balance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>01/01/2024</td>
-                            <td>School Fees Payment</td>
-                            <td>$20,000</td>
-                            <td>$60,000</td>
-                        </tr>
-                        <tr>
-                            <td>01/02/2024</td>
-                            <td>Accommodation Fees Payment</td>
-                            <td>$1,000</td>
-                            <td>$3,000</td>
-                        </tr>
-                        <tr>
-                            <td>01/03/2024</td>
-                            <td>School Fees Payment</td>
-                            <td>$20,000</td>
-                            <td>$40,000</td>
-                        </tr>
-                        <tr>
-                            <td>01/04/2024</td>
-                            <td>Accommodation Fees Payment</td>
-                            <td>$1,000</td>
-                            <td>$2,000</td>
-                        </tr>
-                        <tr>
-                            <td>01/05/2024</td>
-                            <td>School Fees Payment</td>
-                            <td>$20,000</td>
-                            <td>$20,000</td>
-                        </tr>
-                        <tr>
-                            <td>01/06/2024</td>
-                            <td>Accommodation Fees Payment</td>
-                            <td>$1,000</td>
-                            <td>$1,000</td>
-                        </tr>
-                        <tr>
-                            <td>01/07/2024</td>
-                            <td>School Fees Payment</td>
-                            <td>$20,000</td>
-                            <td>$0</td>
-                        </tr>
-                        <tr>
-                            <td>01/08/2024</td>
-                            <td>Accommodation Fees Payment</td>
-                            <td>$1,000</td>
-                            <td>$0</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  <div class="dashboard" id="dashboard-page" style="display: none;">
+    <div class="sidebar">
+      <a href="#" id="sip-link">Student Portal</a>
+      <a href="#" id="dashboard-link">Dashboard</a>
+      <a href="#" id="registration-link">Registration</a>
+      <a href="#" id="statement-link">Statement of Results</a>
+      <a href="#" id="message-link">Messages</a>
+      <a href="#" id="evaluation-link">Lecture Evaluation</a>
+      <a href="#" id="timetable-link">Timetable</a>
+      <a href="#" id="awards-link">Awards</a>
     </div>
-    <script src="scripts.js"></script>
+    <div class="content">
+      <div id="sip-content" class="content-section">
+        <h2>Welcome to the Student Portal</h2>
+        <img src="https://i.ibb.co/gSmdS6L/bayloruniversity-green-jpg.jpg" alt="Baylor University">
+        <p>Welcome to the Baylor University Student Portal. Navigate through the sidebar to access various sections of your student account.</p>
+      </div>
+      <div id="dashboard-content" class="content-section" style="display: none;">
+        <h2>Dashboard</h2>
+        <form>
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" value="MR." readonly>
+          </div>
+          <div class="form-group">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" value="KELVIN" readonly>
+          </div>
+          <div class="form-group">
+            <label for="middle-name">Middle Name:</label>
+            <input type="text" id="middle-name" value="BRIGHT" readonly>
+          </div>
+          <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" value="BAIDOO" readonly>
+          </div>
+          <div class="form-group">
+            <label for="programme">Programme:</label>
+            <input type="text" id="programme" value="BACHELOR OF MEDICINE" readonly>
+          </div>
+          <div class="form-group">
+            <label for="level">Level:</label>
+            <input type="text" id="level" value="100" readonly>
+          </div>
+          <div class="form-group">
+            <label for="hall">Hall:</label>
+            <input type="text" id="hall" value="Teal Hall" readonly>
+          </div>
+          <div class="form-group">
+            <label for="institutional-email">Institutional Email:</label>
+            <input type="email" id="institutional-email" value="kelvin.baidoo@stu.ucc.edu.gh" readonly>
+          </div>
+          <div class="form-group">
+            <label for="gps-address">GPS Address:</label>
+            <input type="text" id="gps-address" value="Baylor Medical Center, 3500 Gaston Ave, Dallas, TX 75246" readonly>
+          </div>
+          <div class="form-group">
+            <label for="cellphone">Cellphone:</label>
+            <input type="text" id="cellphone" value="0502534684" readonly>
+          </div>
+          <div class="form-group">
+            <label for="postal-address">Postal Address:</label>
+            <input type="text" id="postal-address" value="Baylor University, Waco, TX 76798" readonly>
+          </div>
+          <div class="form-group">
+            <label for="hometown">Hometown:</label>
+            <input type="text" id="hometown" value="Swedru" readonly>
+          </div>
+          <div class="form-group">
+            <label for="place-of-birth">Place of Birth:</label>
+            <input type="text" id="place-of-birth" value="Swedru" readonly>
+          </div>
+        </form>
+      </div>
+      <div id="statement-content" class="content-section" style="display: none;">
+        <h2>Statement of Results</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Course Title</th>
+              <th>Credit</th>
+              <th>Grade</th>
+              <th>GP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MED101</td>
+              <td>Human Anatomy</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>MED102</td>
+              <td>Biochemistry</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>MED103</td>
+              <td>Physiology</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>MED104</td>
+              <td>Pathology</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>MED105</td>
+              <td>Pharmacology</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>MED201</td>
+              <td>Immunology</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>MED202</td>
+              <td>Neuroscience</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>MED203</td>
+              <td>Public Health</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>MED204</td>
+              <td>Emergency Medicine</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>MED205</td>
+              <td>Psychiatry</td>
+              <td>3</td>
+              <td>A</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td colspan="4">Total Credit Hours</td>
+              <td>30</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">GPA</td>
+              <td>4.0</td>
+            </tr>
+            <tr>
+              <td colspan="4">Cumulative GPA</td>
+              <td>4.0</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div id="message-content" class="content-section" style="display: none;">
+        <h2>Messages</h2>
+        <p>No new messages.</p>
+      </div>
+      <div id="evaluation-content" class="content-section" style="display: none;">
+        <h2>Lecture Evaluation</h2>
+        <div class="form-group">
+          <label for="course-code-select">Course Code:</label>
+          <select id="course-code-select" onchange="populateLecturers()">
+            <option value="MED101">MED101</option>
+            <option value="MED102">MED102</option>
+            <option value="MED103">MED103</option>
+            <option value="MED104">MED104</option>
+            <option value="MED105">MED105</option>
+            <option value="MED106">MED106</option>
+            <option value="MED107">MED107</option>
+            <option value="MED201">MED201</option>
+            <option value="MED202">MED202</option>
+            <option value="MED203">MED203</option>
+            <option value="MED204">MED204</option>
+            <option value="MED205">MED205</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="course-name">Course:</label>
+          <input type="text" id="course-name" readonly>
+        </div>
+        <div class="form-group">
+          <label for="lecturer-select">Lecturer:</label>
+          <select id="lecturer-select"></select>
+        </div>
+      </div>
+      <div id="timetable-content" class="content-section" style="display: none;">
+        <h2>Timetable</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>8:00 - 10:00</th>
+              <th>10:00 - 12:00</th>
+              <th>12:00 - 2:00</th>
+              <th>2:00 - 4:00</th>
+              <th>4:00 - 6:00</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>Human Anatomy<br>Room 101</td>
+              <td>Biochemistry<br>Room 102</td>
+              <td>Physiology<br>Room 103</td>
+              <td>Pathology<br>Room 104</td>
+              <td>Pharmacology<br>Room 105</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>Microbiology<br>Room 201</td>
+              <td>Medical Genetics<br>Room 202</td>
+              <td>Immunology<br>Room 203</td>
+              <td>Neuroscience<br>Room 204</td>
+              <td>Public Health<br>Room 205</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>Emergency Medicine<br>Room 301</td>
+              <td>Psychiatry<br>Room 302</td>
+              <td>Human Anatomy<br>Room 101</td>
+              <td>Biochemistry<br>Room 102</td>
+              <td>Physiology<br>Room 103</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>Pathology<br>Room 104</td>
+              <td>Pharmacology<br>Room 105</td>
+              <td>Microbiology<br>Room 201</td>
+              <td>Medical Genetics<br>Room 202</td>
+              <td>Immunology<br>Room 203</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>Neuroscience<br>Room 204</td>
+              <td>Public Health<br>Room 205</td>
+              <td>Emergency Medicine<br>Room 301</td>
+              <td>Psychiatry<br>Room 302</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="awards-content" class="content-section" style="display: none;">
+        <h2>Awards</h2>
+        <ul>
+          <li>Best Student in Medicine</li>
+          <li>Best Microbiology Student in the School</li>
+          <li>Outstanding Performance in Human Anatomy</li>
+          <li>Top Scorer in Pathology</li>
+          <li>Excellence in Biochemistry</li>
+          <li>Best Presentation in Public Health</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>
