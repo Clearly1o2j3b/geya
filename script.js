@@ -1,46 +1,36 @@
-document.getElementById("login-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    document.getElementById("login-page").style.display = "none";
-    document.getElementById("dashboard-page").style.display = "flex";
-    showContent("sip-content");
-});
+function login() {
+  var loginId = document.getElementById("login-id").value;
+  var loginPassword = document.getElementById("login-password").value;
 
-document.getElementById("sip-link").addEventListener("click", function() {
-    showContent("sip-content");
-});
+  if (
+    loginId === "kelvinbaidoo03@gmail.com" &&
+    loginPassword === "Hulkmode777"
+  ) {
+    document.querySelector(".login-container").style.display = "none";
+    document.querySelector(".container").style.display = "flex";
+  } else {
+    alert("Invalid Bear ID or Password");
+  }
+}
 
-document.getElementById("dashboard-link").addEventListener("click", function() {
-    showContent("dashboard-content");
-});
+function showSection(sectionId) {
+  var sections = document.querySelectorAll(".content-section");
+  sections.forEach(function (section) {
+    section.style.display = "none";
+  });
+  document.getElementById(sectionId).style.display = "block";
+}
 
-document.getElementById('registration-link').addEventListener('click', function() {
-    showContent('registration-content');
-});
+function registerCourse() {
+  var courseCode = document.getElementById("course-code").value;
+  var courseTitle = document.getElementById("course-title").value;
+  var courseCredit = document.getElementById("course-credit").value;
 
-document.getElementById('statement-link').addEventListener('click', function() {
-    showContent('statement-content');
-});
-
-document.getElementById('message-link').addEventListener('click', function() {
-    showContent('message-content');
-});
-
-document.getElementById('timetable-link').addEventListener('click', function() {
-    showContent('timetable-content');
-});
-
-document.getElementById('awards-link').addEventListener('click', function() {
-    showContent('awards-content');
-});
-
-document.getElementById('fees-link').addEventListener('click', function() {
-    showContent('fees-content');
-});
-
-function showContent(contentId) {
-    var contents = document.querySelectorAll('.content-section');
-    contents.forEach(function(content) {
-        content.style.display = 'none';
-    });
-    document.getElementById(contentId).style.display = 'block';
+  if (courseCode && courseTitle && courseCredit) {
+    alert(
+      "Course registered successfully: " + courseCode + " - " + courseTitle
+    );
+  } else {
+    alert("Please fill out all fields");
+  }
 }
