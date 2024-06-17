@@ -1,3 +1,14 @@
+.student-photo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.student-photo img {
+  width: 80px;
+  height: 100px;
+  border-radius: 50%;
+}
+
 body {
   font-family: "Arial", sans-serif;
   background-color: #f0f2f5;
@@ -70,6 +81,7 @@ body {
   color: white;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  height: 100%;
 }
 
 .sidebar h2 {
@@ -80,10 +92,15 @@ body {
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar ul li {
-  margin: 20px 0;
+  margin-bottom: 20px;
+}
+
+.sidebar ul li:last-child {
+  margin-bottom: 0;
 }
 
 .sidebar ul li a {
@@ -109,6 +126,8 @@ body {
 .content-section {
   display: none;
   animation: fadeIn 0.5s;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
 }
 
 .content-section.active {
@@ -139,6 +158,10 @@ body {
 
 .timetable-table td {
   text-align: center;
+}
+
+.details-table tr:last-child td:first-child {
+  text-align: right;
 }
 
 form {
