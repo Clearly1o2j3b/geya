@@ -19,6 +19,14 @@ function showSection(sectionId) {
     section.style.display = "none";
   });
   document.getElementById(sectionId).style.display = "block";
+
+  if (sectionId === "message") {
+    var confetti = document.getElementById("confetti-animation");
+    confetti.classList.add("active");
+    setTimeout(function () {
+      confetti.classList.remove("active");
+    }, 2000);
+  }
 }
 
 function registerCourse() {
