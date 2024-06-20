@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Baylor University Student Portal</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="https://i.ibb.co/9gyLHjt/bayloruniversity-green-jpg.jpg" type="image/x-icon">
 </head>
 
 <body>
@@ -37,14 +38,22 @@
       </ul>
     </div>
     <div class="content">
-      <div class="content-section active" id="dashboard">
+      <div class="content-section" id="dashboard">
         <h2>Dashboard</h2>
-        <p>Welcome, Kelvin Bright Baidoo</p>
-        <p>Registration Number: 2023M4567</p>
-        <p>Program: Medicine</p>
-        <p>Hall: Teal Hall</p>
-        <p>GPS Address: 1311 S 5th St, Waco, TX 76706, USA</p>
-        <p>Postal Address: Baylor University, One Bear Place #97096, Waco, TX 76798-7096, USA</p>
+        <div class="dashboard-grid">
+          <div class="dashboard-item">
+            <p>Welcome, Kelvin Bright Baidoo</p>
+            <p>Registration Number: 2023M4567</p>
+          </div>
+          <div class="dashboard-item">
+            <p>Program: Medicine</p>
+            <p>Hall: Teal Hall</p>
+          </div>
+          <div class="dashboard-item">
+            <p>GPS Address: 1311 S 5th St, Waco, TX 76706, USA</p>
+            <p>Postal Address: Baylor University, One Bear Place #97096, Waco, TX 76798-7096, USA</p>
+          </div>
+        </div>
       </div>
 
       <div class="content-section" id="statement" style="display: none;">
@@ -267,11 +276,11 @@
       <div class="content-section" id="registration" style="display: none;">
         <h2>Course Registration</h2>
         <form id="course-registration-form">
-          <label for="course-code">Course Code</label>
+          <label for="course-code">Course Code:</label>
           <input type="text" id="course-code" required>
-          <label for="course-title">Course Title</label>
+          <label for="course-title">Course Title:</label>
           <input type="text" id="course-title" required>
-          <label for="course-credit">Course Credit</label>
+          <label for="course-credit">Course Credit:</label>
           <input type="number" id="course-credit" required>
           <button type="button" onclick="registerCourse()">Register</button>
         </form>
@@ -279,8 +288,10 @@
 
       <div class="content-section" id="fees" style="display: none;">
         <h2>Fees and Accommodation</h2>
-        <p>School Fees: $80,000/year</p>
-        <p>Accommodation: $4,000/year</p>
+        <div class="fees-summary">
+          <p>School Fees: <span class="amount">$80,000/year</span></p>
+          <p>Accommodation: <span class="amount">$4,000/year</span></p>
+        </div>
         <h3>Payment History</h3>
         <table class="details-table">
           <thead>
@@ -323,31 +334,81 @@
       <div class="content-section" id="awards" style="display: none;">
         <h2>Awards</h2>
         <ul class="awards-list">
-          <li><strong>Awards for First Semester Taken:</strong> 13 out of 16</li>
-          <li><strong>Top Outstanding Performance:</strong> Awarded to Mr. Baidoo Bright as the best Medical student of the First Year for the 2023/2024 academic year.</li>
-          <li><strong>Second Time Best Medical Student:</strong> Awarded for being the best Medical student for the second time.</li>
-          <li><strong>Best Medical Student of 2024/2025:</strong> Awarded for being the best Medical student for the 2024/2025 academic year.</li>
-          <li><strong>Best in Anatomy:</strong> Awarded for excellence in Anatomy studies.</li>
-          <li><strong>Best in Physiology:</strong> Awarded for excellence in Physiology studies.</li>
-          <li><strong>Outstanding Clinical Skills:</strong> Recognized for exceptional clinical skills.</li>
-          <li><strong>Best in Pharmacology:</strong> Awarded for excellence in Pharmacology studies.</li>
-          <li><strong>Best in Pathology:</strong> Awarded for excellence in Pathology studies.</li>
-          <li><strong>Best in Microbiology:</strong> Awarded for excellence in Microbiology studies.</li>
-          <li><strong>Best in Public Health Presentation:</strong> Recognized for outstanding presentation in Public Health.</li>
-          <li><strong>Community Service Award:</strong> Awarded for exemplary community service.</li>
-          <li><strong>Best in Endocrinology:</strong> Awarded for excellence in Endocrinology studies.</li>
-          <li><strong>Best in Genetics:</strong> Awarded for excellence in Genetics studies.</li>
-          <li><strong>Leadership Award:</strong> Awarded for outstanding leadership qualities.</li>
-          <li><strong>Top Academic Performance:</strong> Recognized for top academic performance.</li>
-          <li><strong>Best in Advanced Pharmacology:</strong> Awarded for excellence in Advanced Pharmacology studies.</li>
-          <li><strong>Best in Advanced Immunology:</strong> Awarded for excellence in Advanced Immunology studies.</li>
-          <li><strong>Best in Genetic Engineering:</strong> Awarded for excellence in Genetic Engineering studies.</li>
-          <li><strong>Best in Endocrine Disorders:</strong> Awarded for excellence in Endocrine Disorders studies.</li>
-          <li><strong>Best in Advanced Cardiology:</strong> Awarded for excellence in Advanced Cardiology studies.</li>
-          <li><strong>Best in Neurobiology:</strong> Awarded for excellence in Neurobiology studies.</li>
-          <li><strong>Best in Emergency Medicine:</strong> Awarded for best in Emergency Medicine studies in 2024/2025</li>
-          <li><strong>Best in Practical Medicine:</strong> Awarded for best in Practical Medicine studies in 2024/2025.</li>
-          <li><strong>10 awards taken out of 10:</strong> 10 awards taken this semester</li>
+          <li>
+            <strong>Awards for First Semester Taken:</strong> 13 out of 16
+          </li>
+          <li>
+            <strong>Top Outstanding Performance:</strong> Awarded to Mr. Baidoo Bright as the best Medical student of the First Year for the 2023/2024 academic year.
+          </li>
+          <li>
+            <strong>Second Time Best Medical Student:</strong> Awarded for being the best Medical student for the second time.
+          </li>
+          <li>
+            <strong>Best Medical Student of 2024/2025:</strong> Awarded for being the best Medical student for the 2024/2025 academic year.
+          </li>
+          <li>
+            <strong>Best in Anatomy:</strong> Awarded for excellence in Anatomy studies.
+          </li>
+          <li>
+            <strong>Best in Physiology:</strong> Awarded for excellence in Physiology studies.
+          </li>
+          <li>
+            <strong>Outstanding Clinical Skills:</strong> Recognized for exceptional clinical skills.
+          </li>
+          <li>
+            <strong>Best in Pharmacology:</strong> Awarded for excellence in Pharmacology studies.
+          </li>
+          <li>
+            <strong>Best in Pathology:</strong> Awarded for excellence in Pathology studies.
+          </li>
+          <li>
+            <strong>Best in Microbiology:</strong> Awarded for excellence in Microbiology studies.
+          </li>
+          <li>
+            <strong>Best in Public Health Presentation:</strong> Recognized for outstanding presentation in Public Health.
+          </li>
+          <li>
+            <strong>Community Service Award:</strong> Awarded for exemplary community service.
+          </li>
+          <li>
+            <strong>Best in Endocrinology:</strong> Awarded for excellence in Endocrinology studies.
+          </li>
+          <li>
+            <strong>Best in Genetics:</strong> Awarded for excellence in Genetics studies.
+          </li>
+          <li>
+            <strong>Leadership Award:</strong> Awarded for outstanding leadership qualities.
+          </li>
+          <li>
+            <strong>Top Academic Performance:</strong> Recognized for top academic performance.
+          </li>
+          <li>
+            <strong>Best in Advanced Pharmacology:</strong> Awarded for excellence in Advanced Pharmacology studies.
+          </li>
+          <li>
+            <strong>Best in Advanced Immunology:</strong> Awarded for excellence in Advanced Immunology studies.
+          </li>
+          <li>
+            <strong>Best in Genetic Engineering:</strong> Awarded for excellence in Genetic Engineering studies.
+          </li>
+          <li>
+            <strong>Best in Endocrine Disorders:</strong> Awarded for excellence in Endocrine Disorders studies.
+          </li>
+          <li>
+            <strong>Best in Advanced Cardiology:</strong> Awarded for excellence in Advanced Cardiology studies.
+          </li>
+          <li>
+            <strong>Best in Neurobiology:</strong> Awarded for excellence in Neurobiology studies.
+          </li>
+          <li>
+            <strong>Best in Emergency Medicine:</strong> Awarded for best in Emergency Medicine studies in 2024/2025
+          </li>
+          <li>
+            <strong>Best in Practical Medicine:</strong> Awarded for best in Practical Medicine studies in 2024/2025.
+          </li>
+          <li>
+            <strong>10 awards taken out of 10:</strong> 10 awards taken this semester
+          </li>
         </ul>
       </div>
 
@@ -357,9 +418,29 @@
       </div>
       <div class="content-section" id="message" style="display: none;">
         <h2>Messages</h2>
-        <div class="message-box" id="message-box">
-          <p>1.You've been invited by Harvard to the annual Medical Student Awards as you've been recognized by your school and this school and would like to invite you as a special guest. We congratulate you on your achievement.</p>
-          <p>2.You've been invited by Stanford University to the Medical Student 2024/2025 Student Awards We would like to invite you as a special guest in this Programme. We congratulate you on your achievement.</p>
+        <div class="messages-container">
+          <div class="message-item">
+            <div class="message-header">
+              <span class="message-sender">Harvard University</span>
+              <span class="message-date">Today</span>
+            </div>
+            <div class="message-body">
+              <p>Congratulations! You've been invited to the annual Medical Student Awards as a special guest.
+                Your outstanding achievements have been recognized by both Baylor University and Harvard.
+                We look forward to celebrating with you.</p>
+            </div>
+          </div>
+          <div class="message-item">
+            <div class="message-header">
+              <span class="message-sender">Stanford University</span>
+              <span class="message-date">Yesterday</span>
+            </div>
+            <div class="message-body">
+              <p>Congratulations! You've been invited to the Medical Student 2024/2025 Student Awards as a special guest.
+                Your outstanding academic performance has earned you this recognition. We look forward to
+                welcoming you to Stanford.</p>
+            </div>
+          </div>
         </div>
         <div id="confetti-animation" class="confetti-animation"></div>
       </div>
