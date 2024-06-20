@@ -38,12 +38,18 @@
       </ul>
     </div>
     <div class="content">
-      <div class="content-section" id="dashboard">
-        <h2>Dashboard</h2>
+      <div class="content-section active" id="dashboard">
+        <div class="dashboard-header">
+          <h2>Dashboard</h2>
+          <div class="student-id">
+            <span id="student-name"></span> <span id="student-id-number"></span>
+          </div>
+        </div>
         <div class="dashboard-grid">
-          <div class="dashboard-item">
-            <p>Welcome, Kelvin Bright Baidoo</p>
-            <p>Registration Number: 2023M4567</p>
+          <div class="dashboard-item welcome-message">
+            <p>Welcome back,</p>
+            <h3 id="greeting-name"></h3>
+            <p>Registration Number: <span id="reg-number"></span></p>
           </div>
           <div class="dashboard-item">
             <p>Program: Medicine</p>
@@ -52,6 +58,25 @@
           <div class="dashboard-item">
             <p>GPS Address: 1311 S 5th St, Waco, TX 76706, USA</p>
             <p>Postal Address: Baylor University, One Bear Place #97096, Waco, TX 76798-7096, USA</p>
+          </div>
+        </div>
+        <div class="news-feed">
+          <h3>Student News</h3>
+          <div class="news-item">
+            <div class="news-header">
+              <h4>Upcoming Career Fair</h4>
+              <span class="news-date">Oct 26</span>
+            </div>
+            <p>Don't miss the annual Baylor Career Fair! Network with top employers in healthcare and beyond.
+              Prepare your resumes!</p>
+          </div>
+          <div class="news-item">
+            <div class="news-header">
+              <h4>Midterm Exam Schedule Released</h4>
+              <span class="news-date">Oct 18</span>
+            </div>
+            <p>The midterm exam schedule is now available on the portal. Please check the dates and times for your
+              respective courses.</p>
           </div>
         </div>
       </div>
@@ -276,11 +301,11 @@
       <div class="content-section" id="registration" style="display: none;">
         <h2>Course Registration</h2>
         <form id="course-registration-form">
-          <label for="course-code">Course Code:</label>
+          <label for="course-code">Course Code</label>
           <input type="text" id="course-code" required>
-          <label for="course-title">Course Title:</label>
+          <label for="course-title">Course Title</label>
           <input type="text" id="course-title" required>
-          <label for="course-credit">Course Credit:</label>
+          <label for="course-credit">Course Credit</label>
           <input type="number" id="course-credit" required>
           <button type="button" onclick="registerCourse()">Register</button>
         </form>
@@ -338,13 +363,17 @@
             <strong>Awards for First Semester Taken:</strong> 13 out of 16
           </li>
           <li>
-            <strong>Top Outstanding Performance:</strong> Awarded to Mr. Baidoo Bright as the best Medical student of the First Year for the 2023/2024 academic year.
+            <strong>Top Outstanding Performance:</strong> Awarded to Mr. Baidoo Bright as the best Medical student of
+            the First Year for the 2023/2024 academic year.
           </li>
           <li>
-            <strong>Second Time Best Medical Student:</strong> Awarded for being the best Medical student for the second time.
+            <strong>Second Time Best Medical Student:</strong> Awarded for being the best Medical student for the
+            second
+            time.
           </li>
           <li>
-            <strong>Best Medical Student of 2024/2025:</strong> Awarded for being the best Medical student for the 2024/2025 academic year.
+            <strong>Best Medical Student of 2024/2025:</strong> Awarded for being the best Medical student for the
+            2024/2025 academic year.
           </li>
           <li>
             <strong>Best in Anatomy:</strong> Awarded for excellence in Anatomy studies.
@@ -365,7 +394,8 @@
             <strong>Best in Microbiology:</strong> Awarded for excellence in Microbiology studies.
           </li>
           <li>
-            <strong>Best in Public Health Presentation:</strong> Recognized for outstanding presentation in Public Health.
+            <strong>Best in Public Health Presentation:</strong> Recognized for outstanding presentation in Public
+            Health.
           </li>
           <li>
             <strong>Community Service Award:</strong> Awarded for exemplary community service.
@@ -436,7 +466,8 @@
               <span class="message-date">Yesterday</span>
             </div>
             <div class="message-body">
-              <p>Congratulations! You've been invited to the Medical Student 2024/2025 Student Awards as a special guest.
+              <p>Congratulations! You've been invited to the Medical Student 2024/2025 Student Awards as a special
+                guest.
                 Your outstanding academic performance has earned you this recognition. We look forward to
                 welcoming you to Stanford.</p>
             </div>
