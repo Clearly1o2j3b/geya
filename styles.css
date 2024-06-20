@@ -88,7 +88,6 @@ body {
   display: flex;
   height: 100vh;
   position: relative;
-  /* For positioning confetti */
 }
 
 .sidebar {
@@ -218,7 +217,6 @@ form button:hover {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  /* Responsive grid layout */
   gap: 20px;
 }
 
@@ -371,16 +369,23 @@ form button:hover {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /* Ensure the animation stays within the message item */
+  position: relative;
+  /* For absolute positioning of the checkmark */
 }
 
 .message-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  /* Align items to the same baseline */
   margin-bottom: 10px;
 }
 
 .message-sender {
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .message-date {
@@ -415,4 +420,147 @@ form button:hover {
 
 .fees-summary .amount {
   font-weight: bold;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.student-id {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.news-feed {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.news-item {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+  /* For animation effects */
+}
+
+.news-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.news-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.welcome-message {
+  grid-column: span 3;
+  /* Make it span across all three columns */
+  text-align: center;
+  background-image: linear-gradient(135deg, #007bff, #003366);
+  color: white;
+  padding: 30px 20px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  animation: gradientShift 5s linear infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.welcome-message h3 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: textGlow 1.5s infinite alternate;
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px white;
+  }
+
+  to {
+    text-shadow: 0 0 20px white;
+  }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .welcome-message {
+    grid-column: span 2;
+    /* Span across two columns on smaller screens */
+  }
+
+  .news-item {
+    padding: 10px;
+  }
+
+  .news-header h4 {
+    font-size: 1rem;
+  }
+
+  .message-item {
+    padding: 15px;
+  }
+
+  .message-sender {
+    font-size: 1rem;
+  }
+
+  .message-date {
+    font-size: 0.7rem;
+  }
+
+  .sidebar {
+    width: 70px;
+    /* Reduce sidebar width on smaller screens */
+  }
+
+  .sidebar h2,
+  .sidebar .student-photo img {
+    display: none;
+    /* Hide logo and photo on smaller screens */
+  }
+
+  .sidebar ul li a {
+    padding: 10px;
+    text-align: center;
+  }
 }
