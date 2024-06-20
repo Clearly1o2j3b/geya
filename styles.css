@@ -7,6 +7,7 @@
   width: 80px;
   height: 100px;
   border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -32,6 +33,19 @@ body {
   text-align: center;
   max-width: 400px;
   width: 100%;
+  animation: slideIn 0.8s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .login-box img {
@@ -73,6 +87,8 @@ body {
 .container {
   display: flex;
   height: 100vh;
+  position: relative;
+  /* For positioning confetti */
 }
 
 .sidebar {
@@ -82,6 +98,8 @@ body {
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   height: 100%;
+  transition: width 0.3s ease-in-out;
+  /* Add transition for smooth resize */
 }
 
 .sidebar h2 {
@@ -121,6 +139,8 @@ body {
   padding: 20px;
   background-color: white;
   overflow-y: auto;
+  transition: margin-left 0.3s ease-in-out;
+  /* Add transition for smooth resize */
 }
 
 .content-section {
@@ -196,6 +216,10 @@ form button:hover {
 .awards-list {
   padding: 0;
   margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Responsive grid layout */
+  gap: 20px;
 }
 
 .awards-list li {
@@ -203,7 +227,6 @@ form button:hover {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
   transition: transform 0.3s ease;
 }
 
@@ -250,6 +273,7 @@ form button:hover {
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(100%);
   }
@@ -259,6 +283,7 @@ form button:hover {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -278,6 +303,7 @@ form button:hover {
     transform: translateY(-100vh) rotate(0);
     opacity: 1;
   }
+
   100% {
     transform: translateY(100vh) rotate(360deg);
     opacity: 0;
@@ -334,20 +360,59 @@ form button:hover {
   animation-delay: 1.8s;
 }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
+.messages-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
 
-  .sidebar {
-    width: 100%;
-    height: auto;
-    box-shadow: none;
-  }
+.message-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-  .content {
-    width: 100%;
-    padding: 10px;
-  }
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.message-sender {
+  font-weight: bold;
+}
+
+.message-date {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.message-body p {
+  margin: 0;
+  /* Remove default paragraph margin */
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.fees-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.fees-summary .amount {
+  font-weight: bold;
 }
