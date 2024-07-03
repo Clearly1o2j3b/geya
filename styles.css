@@ -1,20 +1,15 @@
-.student-photo {
-  text-align: center;
-  margin-bottom: 20px;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
-.student-photo img {
-  width: 80px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f0f2f5;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .login-container {
@@ -41,7 +36,6 @@ body {
     transform: translateY(-100%);
     opacity: 0;
   }
-
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -67,6 +61,12 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
 .login-box button {
@@ -98,12 +98,12 @@ body {
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   height: 100%;
   transition: width 0.3s ease-in-out;
-  /* Add transition for smooth resize */
 }
 
 .sidebar h2 {
   text-align: center;
   margin-bottom: 20px;
+  font-weight: 500;
 }
 
 .sidebar ul {
@@ -127,10 +127,15 @@ body {
   transition: 0.3s;
   display: block;
   padding: 10px 20px;
+  border-radius: 5px;
 }
 
 .sidebar ul li a:hover {
   background-color: #002244;
+}
+
+.sidebar ul li a.active {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .content {
@@ -139,7 +144,6 @@ body {
   background-color: white;
   overflow-y: auto;
   transition: margin-left 0.3s ease-in-out;
-  /* Add transition for smooth resize */
 }
 
 .content-section {
@@ -199,6 +203,12 @@ form button {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
 form button {
@@ -271,7 +281,6 @@ form button:hover {
   0% {
     transform: translateY(-100%);
   }
-
   100% {
     transform: translateY(100%);
   }
@@ -281,7 +290,6 @@ form button:hover {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -301,7 +309,6 @@ form button:hover {
     transform: translateY(-100vh) rotate(0);
     opacity: 1;
   }
-
   100% {
     transform: translateY(100vh) rotate(360deg);
     opacity: 0;
@@ -370,16 +377,13 @@ form button:hover {
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  /* Ensure the animation stays within the message item */
   position: relative;
-  /* For absolute positioning of the checkmark */
 }
 
 .message-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* Align items to the same baseline */
   margin-bottom: 10px;
 }
 
@@ -395,7 +399,6 @@ form button:hover {
 
 .message-body p {
   margin: 0;
-  /* Remove default paragraph margin */
 }
 
 .dashboard-grid {
@@ -410,6 +413,11 @@ form button:hover {
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.dashboard-item:hover {
+  transform: translateY(-5px);
 }
 
 .fees-summary {
@@ -449,12 +457,16 @@ form button:hover {
   margin-bottom: 15px;
   position: relative;
   overflow: hidden;
-  /* For animation effects */
+  transition: background-color 0.3s ease;
 }
 
 .news-item:last-child {
   border-bottom: none;
   margin-bottom: 0;
+}
+
+.news-item:hover {
+  background-color: #f5f5f5;
 }
 
 .news-header {
@@ -476,7 +488,6 @@ form button:hover {
 
 .welcome-message {
   grid-column: span 3;
-  /* Make it span across all three columns */
   text-align: center;
   background-image: linear-gradient(135deg, #007bff, #003366);
   color: white;
@@ -491,11 +502,9 @@ form button:hover {
   0% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
-
   100% {
     background-position: 0% 50%;
   }
@@ -511,56 +520,24 @@ form button:hover {
   from {
     text-shadow: 0 0 10px white;
   }
-
   to {
     text-shadow: 0 0 20px white;
   }
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-  .dashboard-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
+.student-photo {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  .welcome-message {
-    grid-column: span 2;
-    /* Span across two columns on smaller screens */
-  }
+.student-photo img {
+  width: 80px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
 
-  .news-item {
-    padding: 10px;
-  }
-
-  .news-header h4 {
-    font-size: 1rem;
-  }
-
-  .message-item {
-    padding: 15px;
-  }
-
-  .message-sender {
-    font-size: 1rem;
-  }
-
-  .message-date {
-    font-size: 0.7rem;
-  }
-
-  .sidebar {
-    width: 70px;
-    /* Reduce sidebar width on smaller screens */
-  }
-
-  .sidebar h2,
-  .sidebar .student-photo img {
-    display: none;
-    /* Hide logo and photo on smaller screens */
-  }
-
-  .sidebar ul li a {
-    padding: 10px;
-    text-align: center;
-  }
+.student-photo img:hover {
+  transform: scale(1.1);
 }
