@@ -90,6 +90,10 @@ body {
   position: relative;
 }
 
+.sidebar:focus {
+  outline: 2px solid #007bff;
+}
+
 .sidebar {
   width: 250px;
   background-color: #003366;
