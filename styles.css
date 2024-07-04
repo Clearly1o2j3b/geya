@@ -5,7 +5,7 @@
 }
 
 body {
-  font-famil<!DOCTYPE html>
+  font-family<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -491,9 +491,25 @@ body {
       </div>
 
       <div class="content-section" id="sip" style="display: none;">
-        <h2>SIP</h2>
-        <p>Details about SIP will be displayed here.</p>
+        <h2>Student Internship Program (SIP)</h2>
+        <h3>Current Placement:</h3>
+        <p>Texas Children's Hospital, Houston</p>
+        <p>Department: Pediatric Cardiology</p>
+        <p>Supervisor: Dr. Emily Davis</p>
+        <h3>Objectives:</h3>
+        <ul>
+          <li>Gain hands-on experience in diagnosing and treating congenital heart defects.</li>
+          <li>Assist in cardiac catheterization procedures.</li>
+          <li>Participate in patient rounds and conferences.</li>
+        </ul>
+        <h3>Evaluations:</h3>
+        <p>Midterm Evaluation: August 15, 2024</p>
+        <p>Final Evaluation: December 15, 2024</p>
+        <p>
+          <a href="#">View Evaluation Form</a> <a href="#">Submit Evaluation</a>
+        </p>
       </div>
+              
       <div class="content-section" id="message" style="display: none;">
         <h2>Messages</h2>
         <div class="messages-container">
