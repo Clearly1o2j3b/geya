@@ -183,8 +183,9 @@ body {
   text-align: center;
 }
 
+/* Remove this rule to prevent the right alignment issue */
 .details-table tr:last-child td:first-child {
-  text-align: right;
+  text-align: left; /* or remove this rule altogether */
 }
 
 form {
