@@ -43,14 +43,17 @@ body {
 }
 
 .login-box img {
-  width: 100px;
+  /* Increase logo size */
+  width: 200px; /* Adjust as needed */
+  height: auto;
   margin-bottom: 20px;
 }
 
 .login-box h1 {
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 28px; /* Larger font size */
   color: #ffffff;
+  font-weight: bold; /* Bold heading */
 }
 
 .login-box input {
@@ -392,7 +395,6 @@ form button:hover {
 
 .message-header {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
