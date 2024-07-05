@@ -1,3 +1,6 @@
+Here is your combined CSS code with the comments removed from the additional section:
+
+```css
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 * {
@@ -5,7 +8,7 @@
 }
 
 body {
-  font-family "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f0f2f5;
   margin: 0;
   padding: 0;
@@ -17,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #003366; /* Dark blue background - may need contrast adjustment */
+  background-color: #003366;
 }
 
 .login-box {
@@ -50,7 +53,7 @@ body {
 .login-box h1 {
   margin-bottom: 20px;
   font-size: 24px;
-  color: #ffffff; /* White text on dark blue - high contrast */
+  color: #ffffff;
 }
 
 .login-box input {
@@ -72,8 +75,8 @@ body {
 .login-box button {
   width: 100%;
   padding: 12px;
-  background-color: #003366; /* Dark blue button - may need contrast adjustment */
-  color: #ffffff; /* White text on dark blue - high contrast */
+  background-color: #003366;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -96,8 +99,8 @@ body {
 
 .sidebar {
   width: 250px;
-  background-color: #003366; /* Dark blue sidebar - may need contrast adjustment */
-  color: #ffffff; /* White text on dark blue - high contrast */
+  background-color: #003366;
+  color: #ffffff;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   height: 100%;
@@ -125,7 +128,7 @@ body {
 }
 
 .sidebar ul li a {
-  color: #ffffff; /* White text on dark blue - high contrast */
+  color: #ffffff;
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
@@ -185,17 +188,16 @@ body {
 
 .details-table th,
 .timetable-table th {
-  background-color: #003366; /* Dark blue header - may need contrast adjustment */
-  color: #ffffff; /* White text on dark blue - high contrast */
+  background-color: #003366;
+  color: #ffffff;
 }
 
 .timetable-table td {
   text-align: center;
 }
 
-/* Remove this rule to prevent the right alignment issue */
 .details-table tr:last-child td:first-child {
-  text-align: left; /* or remove this rule altogether */
+  text-align: left;
 }
 
 form {
@@ -223,8 +225,8 @@ form input:focus {
 }
 
 form button {
-  background-color: #003366; /* Dark blue button - may need contrast adjustment */
-  color: #ffffff; /* White text on dark blue - high contrast */
+  background-color: #003366;
+  color: #ffffff;
   border: none;
   cursor: pointer;
 }
@@ -254,7 +256,7 @@ form button:hover {
 }
 
 .awards-list li strong {
-  color: #4cbb17; /* Green text - contrast should be fine */
+  color: #4cbb17;
   font-weight: bold;
   display: block;
   margin-bottom: 10px;
@@ -310,7 +312,7 @@ form button:hover {
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: #4cbb17; /* Green confetti - contrast should be fine */
+  background-color: #4cbb17;
   animation: confetti-piece-fall 2s linear infinite;
   opacity: 0;
 }
@@ -393,6 +395,8 @@ form button:hover {
 
 .message-header {
   display: flex;
+
+
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
@@ -501,7 +505,7 @@ form button:hover {
   grid-column: span 3;
   text-align: center;
   background-image: linear-gradient(135deg, #007bff, #003366);
-  color: #ffffff; /* White text on gradient - high contrast */
+  color: #ffffff;
   padding: 30px 20px;
   border-radius: 10px;
   position: relative;
@@ -551,4 +555,50 @@ form button:hover {
 
 .student-photo img:hover {
   transform: scale(1.1);
+}
+
+.content-section#sip {
+  h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #003366;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  .sip-placement {
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: 20px;
+  }
+
+  .sip-evaluations {
+    margin-top: 20px;
+  }
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #003366;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  a:hover {
+    background-color: #002244;
+  }
 }
