@@ -14,14 +14,14 @@
     <div class="login-box">
       <img src="https://i.ibb.co/9gyLHjt/bayloruniversity-green-jpg.jpg" alt="Baylor University Logo">
       <h1>Student Login</h1>
-      <input type="text" id="login-id" placeholder="Bear ID">
-      <input type="password" id="login-password" placeholder="Password">
+      <input type="text" id="login-id" placeholder="Bear ID" required>
+      <input type="password" id="login-password" placeholder="Password" required>
       <button onclick="login()">Login</button>
     </div>
   </div>
 
   <div class="container" style="display: none;">
-    <div class="sidebar" tabindex="0">
+    <div class="sidebar">
       <div class="student-photo">
         <img src="https://i.ibb.co/jbdPrqk/download.jpg" alt="Student Photo">
       </div>
@@ -34,12 +34,11 @@
         <li><a href="#" onclick="showSection('fees')">Fees and Accommodation</a></li>
         <li><a href="#" onclick="showSection('awards')">Awards</a></li>
         <li><a href="#" onclick="showSection('sip')">SIP</a></li>
-        <li><a href="#" onclick="showSection('message')">Messages</a></li>
+        <li><a href="#" onclick="showSection('messages')">Messages</a></li>
       </ul>
     </div>
-    <div class="content">
-      <button tabindex="0"></button>
 
+    <div class="content">
       <div class="content-section active" id="dashboard">
         <div class="dashboard-header">
           <h2>Dashboard</h2>
@@ -66,17 +65,17 @@
           <h3>Student News</h3>
           <div class="news-item">
             <div class="news-header">
-              <h4>2025/2026 Annual Medical School Compenition is here</h4>
+              <h4>2025/2026 Annual Medical School Competition</h4>
               <span class="news-date">September 30th</span>
             </div>
-            <p>Don't miss the annual Baylor Medical Schools competition! Network with top schools in healthcare and beyond. Prepare yourselves and get ready as your school battles it way to the top. Current competionist for the school is Kelvin Bright Baidoo,Allison Perkton, Sophia Merrly, Mekayla Ashborn, Micheal Plum, Somaya Pragh. Support them as they prepare for the competition</p>
+            <p>Don't miss the annual Baylor Medical School competition! Network with top schools in healthcare and beyond. Prepare yourself and get ready as your school battles its way to the top. Current competitors for the school are Kelvin Bright Baidoo, Allison Perkton, Sophia Merrly, Mekayla Ashborn, Michael Plum, and Somaya Pragh. Support them as they prepare for the competition.</p>
           </div>
           <div class="news-item">
             <div class="news-header">
-              <h4>Course Regstration</h4>
+              <h4>Course Registration</h4>
               <span class="news-date">July 22nd</span>
             </div>
-            <p>The school portal is now open.Please register your courses before 10th October.</p>
+            <p>The school portal is now open. Please register your courses before October 10th.</p>
           </div>
         </div>
       </div>
@@ -553,7 +552,7 @@
         </p>
       </div>
 
-      <div class="content-section" id="message" style="display: none;">
+      <div class="content-section" id="messages" style="display: none;">
         <h2>Messages</h2>
         <div class="messages-container">
           <div class="message-item">
