@@ -820,3 +820,81 @@ form button:hover {
   padding: 12px;
   border: 1px solid #ddd;  /* Light gray border around all cells */
 }
+/* ... (your existing CSS) ... */
+
+#competition-registration {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease-in-out; /* Add fadeInUp animation */
+}
+
+#competition-form {
+  max-width: 500px; /* Limit form width */
+  margin: 0 auto; /* Center the form */
+}
+
+#competition-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333; /* Darker label color */
+}
+
+#competition-form input[type="text"],
+#competition-form input[type="number"] { /* Style other input types */
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd; /* Lighter border */
+  border-radius: 6px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+
+
+#competition-form input[type="text"]:focus,
+#competition-form input[type="number"]:focus, /* Focus styles for other inputs */
+#competition-form button:focus { 
+    outline: none;
+    border-color: #007bff; /* Blue outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
+}
+
+
+#competition-form button {
+    display: block;  /* Make button take full width */
+    width: 100%;
+    padding: 14px;  /* Increased padding */
+    background-color: #007bff;  /* Use your primary blue */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Slightly more rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1.1rem; /* Slightly larger button text */
+
+}
+
+#competition-form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+#registration-message {
+  margin-top: 15px;
+  text-align: center;
+}
+
+
+/* Keyframes for fadeInUp animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
