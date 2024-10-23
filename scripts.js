@@ -9,7 +9,6 @@ function login() {
     document.querySelector(".login-container").style.display = "none";
     document.querySelector(".container").style.display = "flex";
 
-    // Set student name and ID on dashboard
     document.getElementById("greeting-name").textContent =
       "Kelvin Bright Baidoo";
     document.getElementById("student-name").textContent =
@@ -22,22 +21,34 @@ function login() {
 }
 
 function showSection(sectionId) {
-  var sections = document.querySelectorAll(".content-section");
-  sections.forEach(function (section) {
+  const sections = document.querySelectorAll(".content-section");
+  sections.forEach((section) => {
     section.style.display = "none";
+    section.style.animation = "none";
+    section.style.transform = "";
   });
 
   const selectedSection = document.getElementById(sectionId);
   if (selectedSection) {
-    selectedSection.style.display = "block"; // Show the selected section
-    selectedSection.classList.add("active"); // Add 'active' class
+    selectedSection.style.display = "block";
+    selectedSection.style.animation = "slideIn 0.5s ease-in-out forwards";
+    selectedSection.style.transform = "translateY(-10px)";
   }
 
   const participatingSchoolsDiv = document.getElementById(
     "participating-schools"
   );
-  if (participatingSchoolsDiv && sectionId !== "competition-registration") {
-    participatingSchoolsDiv.style.display = "none";
+  if (participatingSchoolsDiv) {
+    if (sectionId === "competition-registration") {
+      participatingSchoolsDiv.style.display = "block";
+      participatingSchoolsDiv.style.animation =
+        "slideIn 0.5s ease-in-out forwards";
+      participatingSchoolsDiv.style.transform = "translateY(-10px)";
+    } else {
+      participatingSchoolsDiv.style.display = "none";
+      participatingSchoolsDiv.style.animation = "none";
+      participatingSchoolsDiv.style.transform = "";
+    }
   }
 }
 
@@ -54,13 +65,13 @@ function registerCourse() {
     alert("Please fill out all fields");
   }
 }
+
 const schools = [
-  "Baylor College of Medicine", // Added Baylor
+  "Baylor College of Medicine",
   "Harvard Medical School",
   "Stanford University School of Medicine",
   "Johns Hopkins University School of Medicine",
   "University of California, San Francisco, School of Medicine",
-  // ... (Add other 80 medical schools here) ...
   "Yale School of Medicine",
   "University of Pennsylvania School of Medicine",
   "Columbia University Vagelos College of Physicians and Surgeons",
@@ -94,12 +105,10 @@ const schools = [
 ];
 
 function showParticipatingSchools() {
-  // 1. Get the div.  Create it if it doesn't exist.
   let participatingSchoolsDiv = document.getElementById(
     "participating-schools"
   );
   if (!participatingSchoolsDiv) {
-    // Create the div dynamically
     participatingSchoolsDiv = document.createElement("div");
     participatingSchoolsDiv.id = "participating-schools";
     document
@@ -107,49 +116,72 @@ function showParticipatingSchools() {
       .appendChild(participatingSchoolsDiv);
   }
 
-  // 2. Get or create the <ul> inside the div.
   let schoolsList = document.getElementById("schools-list");
   if (!schoolsList) {
-    // Create <ul> if it doesn't exist
     schoolsList = document.createElement("ul");
     schoolsList.id = "schools-list";
-    participatingSchoolsDiv.appendChild(schoolsList); // Append <ul> to the div
+    participatingSchoolsDiv.appendChild(schoolsList);
   }
 
-  // 3. Clear existing list items.
   schoolsList.innerHTML = "";
 
-  // 4. Populate the list.
   schools.forEach((school) => {
     const listItem = document.createElement("li");
     listItem.textContent = school;
     schoolsList.appendChild(listItem);
   });
 
-  // 5. Display the list.
   participatingSchoolsDiv.style.display = "block";
 }
 
 function registerForCompetition() {
-  // 1. Get the values entered in the form fields:
   const name = document.getElementById("competition-name").value;
   const school = document.getElementById("competition-school").value;
   const schoolId = document.getElementById("competition-id").value;
 
-  // 2. Get the message div for displaying success/error messages:
   const messageDiv = document.getElementById("registration-message");
 
-  // 3. Check if all fields are filled:
   if (name && school && schoolId) {
     messageDiv.textContent = "Registration successful!";
     messageDiv.style.color = "green";
-
-    // You can add more actions here after successful registration, like:
-    // - Clearing the form fields
-    // - Sending data to a server
-    // - Redirecting to another page
   } else {
     messageDiv.textContent = "Please fill in all fields.";
     messageDiv.style.color = "red";
   }
 }
+
+const schoolsListInitial = document.getElementById("schools-list");
+if (schoolsListInitial) {
+  addRippleEffectListener(schoolsListInitial);
+}
+
+function addRippleEffectListener(schoolsList) {
+  schoolsList.addEventListener("click", function (e) {
+    if (e.target && e.target.nodeName === "LI") {
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      const x = e.clientX - e.target.offsetLeft;
+      const y = e.clientY - e.target.offsetTop;
+      ripple.style.left = x + "px";
+      ripple.style.top = y + "px";
+      e.target.appendChild(ripple);
+
+      ripple.addEventListener("animationend", () => {
+        e.target.removeChild(ripple);
+      });
+    }
+  });
+}
+
+document
+  .getElementById("competition-registration")
+  .addEventListener("click", function (event) {
+    if (event.target.textContent === "Participating Schools") {
+      setTimeout(() => {
+        const updatedSchoolsList = document.getElementById("schools-list");
+        if (updatedSchoolsList) {
+          addRippleEffectListener(updatedSchoolsList);
+        }
+      }, 0);
+    }
+  });
