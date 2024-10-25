@@ -15,6 +15,8 @@ function login() {
       "Kelvin Bright Baidoo";
     document.getElementById("reg-number").textContent = "2023M4567";
     document.getElementById("student-id-number").textContent = " - 2023M4567";
+
+    showSection("dashboard"); // Activate Dashboard after login
   } else {
     alert("Invalid Bear ID or Password");
   }
@@ -22,17 +24,31 @@ function login() {
 
 function showSection(sectionId) {
   const sections = document.querySelectorAll(".content-section");
+  const navLinks = document.querySelectorAll(".sidebar ul li a");
+
   sections.forEach((section) => {
     section.style.display = "none";
     section.style.animation = "none";
     section.style.transform = "";
   });
 
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+  });
+
   const selectedSection = document.getElementById(sectionId);
+  const selectedNavLink = document.querySelector(
+    `.sidebar ul li a[onclick="showSection('${sectionId}')"]`
+  );
+
   if (selectedSection) {
     selectedSection.style.display = "block";
     selectedSection.style.animation = "slideIn 0.5s ease-in-out forwards";
     selectedSection.style.transform = "translateY(-10px)";
+  }
+
+  if (selectedNavLink) {
+    selectedNavLink.classList.add("active");
   }
 
   const participatingSchoolsDiv = document.getElementById(
@@ -116,14 +132,10 @@ function showParticipatingSchools() {
       .appendChild(participatingSchoolsDiv);
   }
 
-  let schoolsList = document.getElementById("schools-list");
-  if (!schoolsList) {
-    schoolsList = document.createElement("ul");
-    schoolsList.id = "schools-list";
-    participatingSchoolsDiv.appendChild(schoolsList);
-  }
-
-  schoolsList.innerHTML = "";
+  let schoolsList = document.createElement("ul");
+  schoolsList.id = "schools-list";
+  participatingSchoolsDiv.innerHTML = ""; // Clear previous list content
+  participatingSchoolsDiv.appendChild(schoolsList);
 
   schools.forEach((school) => {
     const listItem = document.createElement("li");
@@ -132,6 +144,9 @@ function showParticipatingSchools() {
   });
 
   participatingSchoolsDiv.style.display = "block";
+
+  // Add ripple effect listener:
+  addRippleEffectListener(schoolsList);
 }
 
 function registerForCompetition() {
@@ -173,15 +188,11 @@ function addRippleEffectListener(schoolsList) {
   });
 }
 
+// Remove the initial ripple listener and only use it inside showParticipatingSchools
 document
   .getElementById("competition-registration")
   .addEventListener("click", function (event) {
     if (event.target.textContent === "Participating Schools") {
-      setTimeout(() => {
-        const updatedSchoolsList = document.getElementById("schools-list");
-        if (updatedSchoolsList) {
-          addRippleEffectListener(updatedSchoolsList);
-        }
-      }, 0);
+      showParticipatingSchools(); //Call the function directly
     }
   });
