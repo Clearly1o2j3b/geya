@@ -898,108 +898,79 @@ form button:hover {
         transform: translateY(0);
     }
 }
-/* Placement Section Styles */
+
 #placement {
-    overflow-y: auto; /* Add vertical scrollbar if content overflows */
-    max-height: calc(100vh - 200px); /* Adjust the 200px as needed */
-    padding: 20px; /* Add padding to the section */
+  padding: 20px;
+  /* Remove max-height and overflow-y to prevent scrolling */ 
 }
 
-#placement h2 {  /* Style the Round 1 heading */
-    font-size: 2em; /* Larger font size */
+#placement h2 {
+    font-size: 1.8em; /* Slightly smaller heading */
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
     color: #0056b3; /* Dark blue */
+    border-bottom: 2px solid #007bff; /* Add a line under the headings */
+    padding-bottom: 10px; /* Add padding below the line */
+
 }
 
-/* Placement Table Styles */
-#placement-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    table-layout: fixed; /* Equal column widths */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border-radius: 8px; /* Rounded corners */
-    overflow: hidden; /* For the striped background to work correctly */
+
+
+#placement-table-1,
+#placement-table-2 {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px; /* Increased margin between tables */
+  table-layout: fixed;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden; /* Keep overflow hidden for striped background */
 }
 
-#placement-table th, #placement-table td {
-    padding: 15px;  /* Increased padding */
-    text-align: left;
-    font-size: 1.1em; /* Slightly larger font size */
-    font-weight: 500; /* Slightly bolder text */
+
+#placement-table-1 th,
+#placement-table-2 th {
+  background-color: #007bff; /* Consistent blue header */
+  color: white;
+  padding: 15px;
+  font-weight: 600;
+  text-align: center; /* Center the header text */
+  border-bottom: 1px solid white; /* Add a white line below header */
+
+
 }
 
-#placement-table th {
-    background-color: #007bff; /* Blue header background */
-    color: white; /* White header text */
+
+#placement-table-1 td,
+#placement-table-2 td {
+  padding: 12px; /* Slightly less padding for cells */
+  text-align: center; /* Center text in cells */
+  border-bottom: 1px solid #eee; /* Subtler bottom border */
+  font-size: 1em; /* Normal font size */
+  font-weight: normal;
 }
 
-#placement-table tbody tr:nth-child(even) { /* Striped rows */
-    background-color: #f2f2f2; /* Light gray */
+
+
+
+#placement-table-1 tbody tr:nth-child(even),
+#placement-table-2 tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Lighter gray stripes */
 }
 
-/* Highlight top schools */
-#placement-table tbody tr:first-child,
-#placement-table tbody tr:nth-child(5) {
-    background-color: #e0f7fa; /* Light teal */
-    font-weight: bold;
-}
-
-#placement-table td {
-    word-break: break-word;
-}
-
-/* Placement Section Styles */
-#placement {
-    overflow-y: auto; /* Add vertical scrollbar if content overflows */
-    max-height: calc(100vh - 200px); /* Adjust the 200px as needed */
-    padding: 20px; /* Add padding to the section */
-}
-
-#placement h2 {  /* Style the Round 1 heading */
-    font-size: 2em; /* Larger font size */
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0056b3; /* Dark blue */
-}
-
-/* Placement Table Styles */
-#placement-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    table-layout: fixed; /* Equal column widths */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border-radius: 8px; /* Rounded corners */
-    overflow: hidden; /* For the striped background to work correctly */
-}
-
-#placement-table th, #placement-table td {
-    padding: 15px;  /* Increased padding */
-    text-align: left;
-    font-size: 1.1em; /* Slightly larger font size */
-    font-weight: 500; /* Slightly bolder text */
-}
-
-#placement-table th {
-    background-color: #007bff; /* Blue header background */
-    color: white; /* White header text */
-}
-
-#placement-table tbody tr:nth-child(even) { /* Striped rows */
-    background-color: #f2f2f2; /* Light gray */
-}
 
 /* Highlight top schools */
-#placement-table tbody tr:first-child,
-#placement-table tbody tr:nth-child(5) {
-    background-color: #e0f7fa; /* Light teal */
-    font-weight: bold;
+#placement-table-1 tbody tr:first-child,
+#placement-table-1 tbody tr:nth-child(5),
+#placement-table-2 tbody tr:first-child,
+#placement-table-2 tbody tr:nth-child(5) {
+  background-color: rgba(0, 123, 255, 0.1); /* Subtle blue highlight */
+  font-weight: 600; /* Slightly bolder highlight */
 }
 
-#placement-table td {
-    word-break: break-word;
+
+#placement-table-1 td,
+#placement-table-2 td {
+    word-break: break-all;
 }
