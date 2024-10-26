@@ -917,7 +917,8 @@ form button:hover {
 
 #placement-table-1,
 #placement-table-2,
-#placement-table-3 {
+#placement-table-3,
+#placement-table-4 {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 30px; /* Increased margin between tables */
@@ -930,6 +931,7 @@ form button:hover {
 
 #placement-table-1 th,
 #placement-table-2 th,
+#placement-table-3 th, 
 #placement-table-3 th {
   background-color: #007bff; /* Consistent blue header */
   color: white;
@@ -944,6 +946,7 @@ form button:hover {
 
 #placement-table-1 td,
 #placement-table-2 td,
+#placement-table-3 td,
 #placement-table-3 td {
   padding: 12px; /* Slightly less padding for cells */
   text-align: center; /* Center text in cells */
@@ -957,7 +960,8 @@ form button:hover {
 
 #placement-table-1 tbody tr:nth-child(even),
 #placement-table-2 tbody tr:nth-child(even),
-#placement-table-3 tbody tr:nth-child(even) {
+#placement-table-4 tbody tr:nth-child(even) 
+#placement-table-4 td {
   background-color: #f9f9f9; /* Lighter gray stripes */
 }
 
