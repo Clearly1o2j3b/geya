@@ -651,8 +651,6 @@ form button:hover {
 }
 
 
-/* ... (previous CSS code) ... */
-
 .content-section#sip {
   padding: 30px;
   border-radius: 12px;
@@ -737,7 +735,7 @@ form button:hover {
 
 .timetable-table tbody tr:last-child td {
   border-bottom: none;
-}/* ... (other CSS) ... */
+}
 
 /* SIP Styling */
 .content-section#sip {
@@ -918,7 +916,8 @@ form button:hover {
 
 
 #placement-table-1,
-#placement-table-2 {
+#placement-table-2,
+#placement-table-3 {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 30px; /* Increased margin between tables */
@@ -930,7 +929,8 @@ form button:hover {
 
 
 #placement-table-1 th,
-#placement-table-2 th {
+#placement-table-2 th,
+#placement-table-3 th {
   background-color: #007bff; /* Consistent blue header */
   color: white;
   padding: 15px;
@@ -943,7 +943,8 @@ form button:hover {
 
 
 #placement-table-1 td,
-#placement-table-2 td {
+#placement-table-2 td,
+#placement-table-3 td {
   padding: 12px; /* Slightly less padding for cells */
   text-align: center; /* Center text in cells */
   border-bottom: 1px solid #eee; /* Subtler bottom border */
@@ -955,7 +956,8 @@ form button:hover {
 
 
 #placement-table-1 tbody tr:nth-child(even),
-#placement-table-2 tbody tr:nth-child(even) {
+#placement-table-2 tbody tr:nth-child(even),
+#placement-table-3 tbody tr:nth-child(even) {
   background-color: #f9f9f9; /* Lighter gray stripes */
 }
 
@@ -964,13 +966,16 @@ form button:hover {
 #placement-table-1 tbody tr:first-child,
 #placement-table-1 tbody tr:nth-child(5),
 #placement-table-2 tbody tr:first-child,
-#placement-table-2 tbody tr:nth-child(5) {
+#placement-table-2 tbody tr:nth-child(5),
+#placement-table-3 tbody tr:first-child,
+#placement-table-3 tbody tr:nth-child(5) {
   background-color: rgba(0, 123, 255, 0.1); /* Subtle blue highlight */
   font-weight: 600; /* Slightly bolder highlight */
 }
 
 
 #placement-table-1 td,
-#placement-table-2 td {
+#placement-table-2 td,
+#placement-table-3 td {
     word-break: break-all;
 }
