@@ -1,16 +1,30 @@
-```css
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
-* {
+/* Resetting default styles (recommended for consistency) */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   background-color: #f0f2f5;
-  margin: 0;
-  padding: 0;
+  min-height: 100vh; /* Ensure body fills viewport height */
+  display: flex;
+  flex-direction: column; /* This is important for full-height layout */
   overflow-x: hidden;
+}
+
+/* Login Section */
+.login-container {
+  flex: 1; /* This will allow the login container to take the remaining height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #003366;
 }
 
 .login-container {
@@ -87,9 +101,9 @@ body {
   background-color: #002244;
 }
 
-.container {
+container {
   display: flex;
-  height: 100vh;
+  flex: 1; /* Allow container to grow to fill available space */
   position: relative;
 }
 
@@ -146,11 +160,10 @@ body {
 }
 
 .content {
-  flex: 1;
+  flex: 1; /* Allow content to fill available space */
   padding: 20px;
   background-color: white;
   overflow-y: auto;
-  transition: margin-left 0.3s ease-in-out;
 }
 
 .content button:focus,
@@ -170,7 +183,7 @@ body {
   display: block;
 }
 
-.details-table,
+details-table,
 .timetable-table {
   width: 100%;
   border-collapse: collapse;
@@ -189,7 +202,7 @@ body {
 .details-table th,
 .timetable-table th {
   background-color: #003366;
-  color: #ffffff;
+  color: white;
 }
 
 .timetable-table td {
@@ -245,7 +258,7 @@ form button:hover {
 
 .awards-list li {
   background-color: #fff; /* Fallback white background */
-  padding: 30px;  /* Increased padding (20px + 20% ≈ 30px) */
+  padding: 30px; /* Increased padding (20px + 20% ≈ 30px) */
   border-radius: 12px; /* More rounded corners */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
   transition: transform 0.2s ease, background-color 0.3s ease; /* Smooth transitions */
@@ -258,14 +271,22 @@ form button:hover {
 }
 
 /* Random background colors using nth-child and hsl for more control */
-.awards-list li:nth-child(4n + 1) { background-color: hsl(200, 30%, 95%); }
-.awards-list li:nth-child(4n + 2) { background-color: hsl(150, 20%, 95%); }
-.awards-list li:nth-child(4n + 3) { background-color: hsl(100, 25%, 95%);  }
-.awards-list li:nth-child(4n + 4) { background-color: hsl(50, 15%, 95%);  }
+.awards-list li:nth-child(4n + 1) {
+  background-color: hsl(200, 30%, 95%);
+}
+.awards-list li:nth-child(4n + 2) {
+  background-color: hsl(150, 20%, 95%);
+}
+.awards-list li:nth-child(4n + 3) {
+  background-color: hsl(100, 25%, 95%);
+}
+.awards-list li:nth-child(4n + 4) {
+  background-color: hsl(50, 15%, 95%);
+}
 
 .awards-list li strong {
   color: var(--primary-color); /* Use primary color for titles */
-  font-weight: 600;  /* Slightly less bold */
+  font-weight: 600; /* Slightly less bold */
   display: block;
   margin-bottom: 10px;
   font-size: 1.1rem; /* Slightly smaller title */
@@ -281,20 +302,22 @@ form button:hover {
   width: 100%;
   height: 6px; /* Thin line at the top */
   background-color: var(--accent-color); /* Accent color line */
-  opacity: 0.8;  /* Slightly transparent */
+  opacity: 0.8; /* Slightly transparent */
 }
-
-
 
 @media (max-width: 500px) {
   .awards-list {
     grid-template-columns: 1fr; /* Single column on small screens */
   }
-}.awards-list {
+}
+.awards-list {
   padding: 0;
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider min width */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr)
+  ); /* Slightly wider min width */
   gap: 25px; /* Increased gap */
 }
 
@@ -306,7 +329,7 @@ form button:hover {
   transition: transform 0.2s ease, background-color 0.3s ease;
   position: relative;
   overflow: hidden;
-  font-family: 'Arial', sans-serif; /* Changed font */
+  font-family: "Arial", sans-serif; /* Changed font */
 }
 
 .awards-list li:hover {
@@ -314,12 +337,21 @@ form button:hover {
 }
 
 /* More vibrant and varied background colors */
-.awards-list li:nth-child(5n + 1) { background-color: #e9f5db; } /* Light Green */
-.awards-list li:nth-child(5n + 2) { background-color: #d6e2f3; } /* Light Blue */
-.awards-list li:nth-child(5n + 3) { background-color: #fae8e0; } /* Light Coral */
-.awards-list li:nth-child(5n + 4) { background-color: #fff5eb; } /* Light Peach */
-.awards-list li:nth-child(5n + 5) { background-color: #e6f0ff; } /* Light Lavender */
-
+.awards-list li:nth-child(5n + 1) {
+  background-color: #e9f5db;
+} /* Light Green */
+.awards-list li:nth-child(5n + 2) {
+  background-color: #d6e2f3;
+} /* Light Blue */
+.awards-list li:nth-child(5n + 3) {
+  background-color: #fae8e0;
+} /* Light Coral */
+.awards-list li:nth-child(5n + 4) {
+  background-color: #fff5eb;
+} /* Light Peach */
+.awards-list li:nth-child(5n + 5) {
+  background-color: #e6f0ff;
+} /* Light Lavender */
 
 .awards-list li strong {
   color: #333; /* Darker title color */
@@ -330,13 +362,12 @@ form button:hover {
   line-height: 1.5; /* Increased line height */
 }
 
-
-.awards-list li p { /* Style for award description text */
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #555; /* Slightly lighter text color */
+.awards-list li p {
+  /* Style for award description text */
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555; /* Slightly lighter text color */
 }
-
 
 .awards-list li::before {
   content: "";
@@ -345,12 +376,14 @@ form button:hover {
   left: 0;
   width: 100%;
   height: 8px; /* Thicker line */
-  background-color: var(--accent-color); /* Use accent color or any other you prefer */
+  background-color: var(
+    --accent-color
+  ); /* Use accent color or any other you prefer */
   opacity: 0.9;
 }
 
-
-@media (max-width: 600px) { /* Adjusted breakpoint */
+@media (max-width: 600px) {
+  /* Adjusted breakpoint */
   .awards-list {
     grid-template-columns: 1fr;
   }
@@ -446,14 +479,19 @@ form button:hover {
   transform: translateY(-5px);
 }
 
-
 /* Add these styles to create the random background colors */
-.message-item:nth-child(4n + 1) { background-color: #e0f2f7; }
-.message-item:nth-child(4n + 2) { background-color: #f0f8ff; }
-.message-item:nth-child(4n + 3) { background-color: #f5f5dc; }
-.message-item:nth-child(4n + 4) { background-color: #f8f8ff; }
-
-
+.message-item:nth-child(4n + 1) {
+  background-color: #e0f2f7;
+}
+.message-item:nth-child(4n + 2) {
+  background-color: #f0f8ff;
+}
+.message-item:nth-child(4n + 3) {
+  background-color: #f5f5dc;
+}
+.message-item:nth-child(4n + 4) {
+  background-color: #f8f8ff;
+}
 
 .message-header {
   display: flex;
@@ -528,70 +566,65 @@ form button:hover {
 /* ... other styles ... */
 
 .news-feed {
-    background-color: #fff; /* White background for better contrast */
-    border: none; /* Remove border */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    margin-top: 20px;
+  background-color: #fff; /* White background for better contrast */
+  border: none; /* Remove border */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-top: 20px;
 }
 
 .news-item {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    transition: background-color 0.3s ease;
-    position: relative; /* For the pseudo-element */
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+  position: relative; /* For the pseudo-element */
 }
 
-.news-item::before { /* Add a subtle line to the left */
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 10px; /* Adjust vertical position as needed */
-    height: calc(100% - 20px); /* Height of the item minus top/bottom padding */
-    width: 4px; /* Line thickness */
-    background-color: #007bff; /* Blue line */
-    border-radius: 2px;
+.news-item::before {
+  /* Add a subtle line to the left */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px; /* Adjust vertical position as needed */
+  height: calc(100% - 20px); /* Height of the item minus top/bottom padding */
+  width: 4px; /* Line thickness */
+  background-color: #007bff; /* Blue line */
+  border-radius: 2px;
 }
-
-
 
 .news-item:hover {
-    background-color: #f9f9f9; /* Lighter gray hover effect */
-
+  background-color: #f9f9f9; /* Lighter gray hover effect */
 }
-
 
 .news-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align to the top */
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align to the top */
+  margin-bottom: 10px;
 }
 
-
 .news-header h4 {
-    margin: 0;
-    font-size: 1.2rem; /* Slightly larger heading */
-    color: #333;  /* Darker heading color for contrast */
-    flex: 1; /* Allow the heading to take up available space */
-    margin-left: 10px; /* Add some space after the line */
-
+  margin: 0;
+  font-size: 1.2rem; /* Slightly larger heading */
+  color: #333; /* Darker heading color for contrast */
+  flex: 1; /* Allow the heading to take up available space */
+  margin-left: 10px; /* Add some space after the line */
 }
 
 .news-date {
-    font-size: 0.9rem;
-    color: #777;
-    white-space: nowrap; /* Prevent date from wrapping */
-    align-self: flex-start;
-    margin-left: 15px; /* Add space between heading and date */
+  font-size: 0.9rem;
+  color: #777;
+  white-space: nowrap; /* Prevent date from wrapping */
+  align-self: flex-start;
+  margin-left: 15px; /* Add space between heading and date */
 }
 
 .news-item p {
-    color: #555;  /* Slightly lighter paragraph text */
-    line-height: 1.5; /* Improve readability */
-    margin-left: 10px; /* Indent the paragraph slightly */
+  color: #555; /* Slightly lighter paragraph text */
+  line-height: 1.5; /* Improve readability */
+  margin-left: 10px; /* Indent the paragraph slightly */
 }
 
 .welcome-message {
@@ -650,16 +683,15 @@ form button:hover {
   transform: scale(1.1);
 }
 
-
 .content-section#sip {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #FFF9E6; /* Peach/Gold background for SIP */
+  background-color: #fff9e6; /* Peach/Gold background for SIP */
 }
 
 .content-section#sip h2 {
-  color: #A7754D; /* Darker gold for headings */
+  color: #a7754d; /* Darker gold for headings */
   font-size: 1.75rem;
   margin-bottom: 20px;
 }
@@ -685,7 +717,7 @@ form button:hover {
 .content-section#sip a {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #D4AF37; /* Golden button color */
+  background-color: #d4af37; /* Golden button color */
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
@@ -694,43 +726,40 @@ form button:hover {
 }
 
 .content-section#sip a:hover {
-  background-color: #B8860B; /* Darker gold on hover */
+  background-color: #b8860b; /* Darker gold on hover */
 }
-
 
 /* Timetable Styling */
 
 .content-section#timetable {
-    background-color: #FFFAF0; /* Floral white for Timetable */
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fffaf0; /* Floral white for Timetable */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .timetable-table {
-    width: 100%;
-    border-collapse: separate; /* For better spacing with border-spacing */
-    border-spacing: 0 10px; /* Add some space between cells */
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: separate; /* For better spacing with border-spacing */
+  border-spacing: 0 10px; /* Add some space between cells */
+  margin-top: 20px;
 }
 
-
 .timetable-table th {
-    background-color: #FBE7A1; /* Light Gold/Yellow for header */
-    color: #6D4C41; /* Brownish text color */
-    padding: 15px; /* Increased padding */
-    font-weight: 600; /* Slightly bolder header text */
-    border-radius: 8px 8px 0 0; /* Rounded top corners */
-    border-bottom: 2px solid #D4AF37; /* Golden border bottom */
+  background-color: #fbe7a1; /* Light Gold/Yellow for header */
+  color: #6d4c41; /* Brownish text color */
+  padding: 15px; /* Increased padding */
+  font-weight: 600; /* Slightly bolder header text */
+  border-radius: 8px 8px 0 0; /* Rounded top corners */
+  border-bottom: 2px solid #d4af37; /* Golden border bottom */
 }
 
 .timetable-table td {
-    background-color: #FFFFFF; /* White cells */
-    color: #424242;
-    text-align: center;
-    padding: 12px;
-    border-bottom: 1px solid #ddd; /* Subtle border bottom on cells */
-
+  background-color: #ffffff; /* White cells */
+  color: #424242;
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #ddd; /* Subtle border bottom on cells */
 }
 
 .timetable-table tbody tr:last-child td {
@@ -742,11 +771,11 @@ form button:hover {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #FFFFFF; /* White background */
+  background-color: #ffffff; /* White background */
 }
 
 .content-section#sip h2 {
-  color: #007BFF; /* Blue heading color */
+  color: #007bff; /* Blue heading color */
   font-size: 1.75rem;
   margin-bottom: 20px;
 }
@@ -758,12 +787,12 @@ form button:hover {
 }
 
 .content-section#sip p,
-.content-section#sip ul li {  /* Style list items similarly to paragraphs */
+.content-section#sip ul li {
+  /* Style list items similarly to paragraphs */
   margin-bottom: 15px;
   line-height: 1.6;
   color: #555; /* Slightly lighter gray body text */
 }
-
 
 .content-section#sip ul {
   list-style-type: disc;
@@ -774,7 +803,7 @@ form button:hover {
 .content-section#sip a {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #007BFF; /* Blue button color */
+  background-color: #007bff; /* Blue button color */
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
@@ -786,16 +815,16 @@ form button:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
 
-
 /* Timetable Styling */
 .content-section#timetable {
-  background-color: #F5F5F5; /* Very light gray background */
+  background-color: #f5f5f5; /* Very light gray background */
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.timetable-table { /* Use border and padding for cell separation */
+.timetable-table {
+  /* Use border and padding for cell separation */
   width: 100%;
   border-collapse: separate;
   border-spacing: 0; /* Remove default cell spacing */
@@ -803,20 +832,19 @@ form button:hover {
 }
 
 .timetable-table th {
-  background-color: #007BFF; /* Blue header */
+  background-color: #007bff; /* Blue header */
   color: white;
   padding: 15px;
   font-weight: 600;
   border: 1px solid #ddd; /* Light gray border around header cells */
 }
 
-
 .timetable-table td {
-  background-color: #FFFFFF; /* White cells */
+  background-color: #ffffff; /* White cells */
   color: #424242; /* Dark gray text in cells */
   text-align: center;
   padding: 12px;
-  border: 1px solid #ddd;  /* Light gray border around all cells */
+  border: 1px solid #ddd; /* Light gray border around all cells */
 }
 /* ... (your existing CSS) ... */
 
@@ -840,7 +868,8 @@ form button:hover {
 }
 
 #competition-form input[type="text"],
-#competition-form input[type="number"] { /* Style other input types */
+#competition-form input[type="number"] {
+  /* Style other input types */
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd; /* Lighter border */
@@ -849,34 +878,30 @@ form button:hover {
   transition: border-color 0.3s ease;
 }
 
-
-
 #competition-form input[type="text"]:focus,
 #competition-form input[type="number"]:focus, /* Focus styles for other inputs */
-#competition-form button:focus { 
-    outline: none;
-    border-color: #007bff; /* Blue outline */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
+#competition-form button:focus {
+  outline: none;
+  border-color: #007bff; /* Blue outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
 }
 
-
 #competition-form button {
-    display: block;  /* Make button take full width */
-    width: 100%;
-    padding: 14px;  /* Increased padding */
-    background-color: #007bff;  /* Use your primary blue */
-    color: white;
-    border: none;
-    border-radius: 8px; /* Slightly more rounded corners */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-size: 1.1rem; /* Slightly larger button text */
-
+  display: block; /* Make button take full width */
+  width: 100%;
+  padding: 14px; /* Increased padding */
+  background-color: #007bff; /* Use your primary blue */
+  color: white;
+  border: none;
+  border-radius: 8px; /* Slightly more rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.1rem; /* Slightly larger button text */
 }
 
 #competition-form button:hover {
   background-color: #0056b3; /* Darker blue on hover */
-    transform: translateY(-2px); /* Subtle lift on hover */
+  transform: translateY(-2px); /* Subtle lift on hover */
 }
 
 #registration-message {
@@ -884,36 +909,32 @@ form button:hover {
   text-align: center;
 }
 
-
 /* Keyframes for fadeInUp animation */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #placement {
   padding: 20px;
-  /* Remove max-height and overflow-y to prevent scrolling */ 
+  /* Remove max-height and overflow-y to prevent scrolling */
 }
 
 #placement h2 {
-    font-size: 1.8em; /* Slightly smaller heading */
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0056b3; /* Dark blue */
-    border-bottom: 2px solid #007bff; /* Add a line under the headings */
-    padding-bottom: 10px; /* Add padding below the line */
-
+  font-size: 1.8em; /* Slightly smaller heading */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0056b3; /* Dark blue */
+  border-bottom: 2px solid #007bff; /* Add a line under the headings */
+  padding-bottom: 10px; /* Add padding below the line */
 }
-
-
 
 #placement-table-1,
 #placement-table-2,
@@ -928,10 +949,9 @@ form button:hover {
   overflow: hidden; /* Keep overflow hidden for striped background */
 }
 
-
 #placement-table-1 th,
 #placement-table-2 th,
-#placement-table-3 th, 
+#placement-table-3 th,
 #placement-table-3 th {
   background-color: #007bff; /* Consistent blue header */
   color: white;
@@ -939,10 +959,7 @@ form button:hover {
   font-weight: 600;
   text-align: center; /* Center the header text */
   border-bottom: 1px solid white; /* Add a white line below header */
-
-
 }
-
 
 #placement-table-1 td,
 #placement-table-2 td,
@@ -955,16 +972,11 @@ form button:hover {
   font-weight: normal;
 }
 
-
-
-
 #placement-table-1 tbody tr:nth-child(even),
 #placement-table-2 tbody tr:nth-child(even),
-#placement-table-4 tbody tr:nth-child(even) 
-#placement-table-4 td {
+#placement-table-4 tbody tr:nth-child(even) #placement-table-4 td {
   background-color: #f9f9f9; /* Lighter gray stripes */
 }
-
 
 /* Highlight top schools */
 #placement-table-1 tbody tr:first-child,
@@ -977,9 +989,8 @@ form button:hover {
   font-weight: 600; /* Slightly bolder highlight */
 }
 
-
 #placement-table-1 td,
 #placement-table-2 td,
 #placement-table-3 td {
-    word-break: break-all;
+  word-break: break-all;
 }
