@@ -11,11 +11,10 @@
 body {
   font-family: "Roboto", sans-serif;
   background-color: #f0f2f5;
-  min-height: 100vh;
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  overflow-y: auto;
+  height: 100vh;
+  overflow: hidden; /* Prevent body from scrolling */
 }
 
 /* Login Section */
@@ -162,7 +161,6 @@ container {
 .container {
   display: flex;
   flex: 1;
-  position: relative;
 }
 
 .sidebar {
@@ -171,64 +169,16 @@ container {
   color: white;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  overflow-y: auto; /* Independent scroll for sidebar */
 }
 
 .content {
   flex: 1;
   padding: 20px;
   background-color: white;
-}
-
-.content-section {
-  display: none;
-  animation: fadeIn 0.5s;
-  padding: 20px;
-  border-top: 1px solid #ddd;
-}
-
-.content-section.active {
-  display: block;
-}
-
-/* Improved Table Styling -  Now uses a more robust approach to handling scrolling */
-.details-table,
-.timetable-table,
-.awards-table {
-  /* Added awards-table */
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  overflow-x: auto; /* Added horizontal scrolling for wider tables */
-}
-
-.details-table th,
-.details-table td,
-.timetable-table th,
-.timetable-table td,
-.awards-table th,
-.awards-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
-
-.details-table th,
-.timetable-table th,
-.awards-table th {
-  background-color: #007bff;
-  color: white;
-  font-weight: 600;
-}
-
-/* Responsive Table Handling */
-@media (max-width: 768px) {
-  .details-table,
-  .timetable-table,
-  .awards-table {
-    overflow-x: auto;
-  }
+  overflow-y: auto; /* Independent scroll for content */
+  height: 100vh;
 }
 
 .awards-list {
@@ -983,3 +933,4 @@ container {
 #placement-table-3 td {
   word-break: break-all;
 }
+
