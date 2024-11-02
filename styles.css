@@ -181,6 +181,53 @@ container {
   height: 100vh;
 }
 
+.content-section {
+  display: none;
+  animation: fadeIn 0.5s;
+  padding: 20px; /* Added padding for better spacing */
+  border-top: 1px solid #ddd;
+}
+
+.content-section.active {
+  display: block;
+}
+
+/* Improved Table Styling */
+.details-table,
+.timetable-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow to prevent scrollbars within tables */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.details-table th,
+.details-table td,
+.timetable-table th,
+.timetable-table td {
+  border: 1px solid #ddd;
+  padding: 10px; /* Increased padding */
+  text-align: left;
+}
+
+.details-table th,
+.timetable-table th {
+  background-color: #007bff; /* Blue header */
+  color: white;
+  font-weight: 600;
+}
+
+/* Improved Table Responsiveness */
+@media (max-width: 768px) {
+  /* Adjust breakpoint as needed */
+  .details-table,
+  .timetable-table {
+    overflow-x: auto; /* Allow horizontal scroll on smaller screens */
+  }
+}
+
 .awards-list {
   padding: 0;
   margin-top: 20px;
@@ -243,6 +290,7 @@ container {
     grid-template-columns: 1fr; /* Single column on small screens */
   }
 }
+
 .awards-list {
   padding: 0;
   margin-top: 20px;
@@ -933,5 +981,3 @@ container {
 #placement-table-3 td {
   word-break: break-all;
 }
-
-
