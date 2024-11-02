@@ -923,17 +923,23 @@ form button:hover {
 
 #placement {
   padding: 20px;
-  /* Remove max-height and overflow-y to prevent scrolling */
+  max-height: calc(
+    100vh - 100px
+  ); /* Adjust 100px as needed for header/footer */
+  overflow-y: auto; /* Add scroll only if needed */
 }
 
-#placement h2 {
-  font-size: 1.8em; /* Slightly smaller heading */
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #0056b3; /* Dark blue */
-  border-bottom: 2px solid #007bff; /* Add a line under the headings */
-  padding-bottom: 10px; /* Add padding below the line */
+#placement-table-1,
+#placement-table-2,
+#placement-table-3,
+#placement-table-4 {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  table-layout: fixed;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  /* Remove overflow: hidden here - it may be causing issues */
 }
 
 #placement-table-1,
@@ -994,3 +1000,4 @@ form button:hover {
 #placement-table-3 td {
   word-break: break-all;
 }
+
