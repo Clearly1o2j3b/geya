@@ -1,788 +1,2234 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baylor University Student Portal</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="https://i.ibb.co/T8mK7Wz/bayloruniversity-green-jpg.jpg" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCM Student Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        bcm: {
+                            blue: '#001A57',
+                            'blue-light': '#1a3a8a',
+                            burgundy: '#4A0028',
+                            'burgundy-light': '#6a2048',
+                            light: '#f8fafc',
+                            gray: '#f0f4f8',
+                            'gray-dark': '#334155',
+                            gold: '#FFD700',
+                            bronze: '#CD7F32',
+                            silver: '#C0C0C0',
+                            accent: '#5D5CDE',
+                            accent2: '#00B8D9',
+                            accent3: '#FF5630'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in',
+                        'slide-up': 'slideUp 0.4s ease-out',
+                        'slide-down': 'slideDown 0.4s ease-out',
+                        'slide-left': 'slideLeft 0.4s ease-out',
+                        'slide-right': 'slideRight 0.4s ease-out',
+                        'scale-in': 'scaleIn 0.4s ease-out',
+                        'pulse-soft': 'pulseSoft 2s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'bounce-gentle': 'bounceGentle 2s ease infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.8' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' }
+                        },
+                        bounceGentle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        }
+                    },
+                    boxShadow: {
+                        'soft-xl': '0 10px 25px -3px rgba(0, 0, 0, 0.05)',
+                        'soft-2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.07)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.025)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles, dark mode support */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+            --highlight-shadow: 0 0 15px rgba(93, 92, 222, 0.3);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+                --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+                --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+                --highlight-shadow: 0 0 15px rgba(93, 92, 222, 0.5);
+            }
+            
+            .dark\:nav-gradient {
+                background: linear-gradient(to right, #001A57, #212F5A);
+            }
+            
+            .dark\:card-gradient {
+                background: linear-gradient(145deg, #1E293B, #0F172A);
+            }
+        }
+        
+        body {
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-primary {
+            @apply rounded-lg bg-gradient-to-r from-bcm-blue to-bcm-blue-light text-white font-medium py-3 px-4 
+                   shadow-lg hover:shadow-xl hover:from-bcm-burgundy hover:to-bcm-burgundy-light transition-all duration-300
+                   focus:outline-none focus:ring-2 focus:ring-bcm-accent focus:ring-opacity-50;
+        }
+        
+        .btn-secondary {
+            @apply rounded-lg bg-white text-bcm-blue font-medium py-3 px-4 border border-gray-100
+                   shadow-md hover:shadow-xl hover:bg-bcm-gray transition-all duration-300
+                   focus:outline-none focus:ring-2 focus:ring-bcm-accent focus:ring-opacity-50;
+        }
+        
+        .btn-icon {
+            @apply rounded-full w-8 h-8 flex items-center justify-center transition-all duration-300;
+        }
+        
+        .wave-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 90px;
+        }
+
+        .wave-shape .shape-fill {
+            fill: #FFFFFF;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(240, 244, 248, 0.7);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 26, 87, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 26, 87, 0.5);
+        }
+        
+        /* Sequential animation delays */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* Gradient progress bar */
+        .grade-bar {
+            height: 10px;
+            background: linear-gradient(90deg, #5D5CDE 0%, #00B8D9 100%);
+            border-radius: 5px;
+            transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        /* Award gradient */
+        .award-gold {
+            background: linear-gradient(135deg, #ffd700 0%, #ffcc33 50%, #fdba33 100%);
+        }
+        
+        .award-silver {
+            background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 50%, #a0a0a0 100%);
+        }
+        
+        .award-bronze {
+            background: linear-gradient(135deg, #cd7f32 0%, #b87333 50%, #a67035 100%);
+        }
+        
+        .award-platinum {
+            background: linear-gradient(135deg, #e5e4e2 0%, #aeaeae 50%, #e5e4e2 100%);
+        }
+        
+        .award-blue {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%);
+        }
+        
+        .award-green {
+            background: linear-gradient(135deg, #166534 0%, #15803d 50%, #16a34a 100%);
+        }
+        
+        .award-purple {
+            background: linear-gradient(135deg, #581c87 0%, #7e22ce 50%, #9333ea 100%);
+        }
+        
+        .award-red {
+            background: linear-gradient(135deg, #991b1b 0%, #dc2626 50%, #ef4444 100%);
+        }
+        
+        .award-shimmer {
+            background: linear-gradient(
+                90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.8) 50%, 
+                rgba(255,255,255,0) 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 2s linear infinite;
+        }
+
+        .award-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .award-card:hover .award-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--highlight-shadow);
+        }
+        
+        /* Modern card design */
+        .card {
+            @apply bg-white rounded-xl shadow-md transition-all duration-300;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .card:hover {
+            box-shadow: var(--card-shadow-hover);
+        }
+        
+        /* Glass morphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .glass {
+                background: rgba(15, 23, 42, 0.75);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+        }
+        
+        /* Input styling */
+        .input-modern {
+            @apply w-full px-4 py-3.5 border-0 rounded-lg text-gray-700 bg-gray-50/70 shadow-inner-soft
+                   focus:ring-2 focus:ring-bcm-accent focus:outline-none transition-all duration-300;
+        }
+        
+        /* Modern badge */
+        .badge {
+            @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+        }
+        
+        .badge-success {
+            @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100;
+        }
+        
+        /* Decorative shapes */
+        .shape-circle {
+            @apply absolute rounded-full opacity-20;
+            background: linear-gradient(145deg, #5D5CDE, #00B8D9);
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .shape-square {
+            @apply absolute rounded-lg opacity-10;
+            background: linear-gradient(145deg, #5D5CDE, #00B8D9);
+            animation: spin-slow 20s linear infinite;
+        }
+    </style>
 </head>
-
-<body>
-  <div class="login-container">
-    <div class="login-box">
-      <img src="https://i.ibb.co/T8mK7Wz/bayloruniversity-green-jpg.jpg">
-      <h1>Student Login</h1>
-      <input type="text" id="login-id" placeholder="Bear ID" required>
-      <input type="password" id="login-password" placeholder="Password" required>
-      <button onclick="login()">Login</button>
+<body class="bg-bcm-gray text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+    <!-- Decorative shapes -->
+    <div class="shape-circle w-64 h-64 -top-20 -left-20 blur-3xl"></div>
+    <div class="shape-circle w-96 h-96 -bottom-40 -right-40 blur-3xl"></div>
+    <div class="shape-square w-40 h-40 bottom-20 left-20 -rotate-12 blur-2xl"></div>
+    
+    <!-- Login Screens -->
+    <div id="loginScreens" class="min-h-screen flex flex-col relative overflow-hidden">
+        <!-- Top Section with Logo -->
+        <div class="bg-gradient-to-r from-bcm-blue to-bcm-blue-light dark:from-bcm-blue-light dark:to-bcm-blue relative h-80 flex flex-col items-center justify-center text-white p-8">
+            <!-- BCM Logo -->
+            <div class="text-center z-10 mb-6 animate-fade-in">
+                <!-- Actual BCM logo as SVG -->
+                <svg class="w-52 h-auto mx-auto filter drop-shadow-lg" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path d="M50 40C85 40 105 55 105 80C105 95 95 105 80 110C100 115 115 130 115 150C115 175 95 190 55 190H10V40H50Z" fill="white"/>
+                        <path d="M50 100H40V160H55C75 160 85 155 85 140C85 125 75 120 55 120C60 110 75 105 75 85C75 65 65 60 50 60H40V100H50Z" fill="white"/>
+                        
+                        <path d="M150 40C200 40 240 60 240 115C240 170 200 190 150 190C100 190 60 170 60 115C60 60 100 40 150 40Z" fill="white"/>
+                        <path d="M150 60C115 60 95 80 95 115C95 150 115 170 150 170C185 170 205 150 205 115C205 80 185 60 150 60Z" fill="white"/>
+                        
+                        <path d="M270 40H320L350 140L380 40H430V190H400V80L360 190H340L300 80V190H270V40Z" fill="white"/>
+                    </g>
+                </svg>
+            </div>
+            
+            <p class="mt-1 text-xl tracking-wide font-light">STUDENT INFORMATION PORTAL</p>
+            
+            <!-- Wave Shape -->
+            <div class="wave-shape">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Login Forms -->
+        <div class="flex-grow flex items-start justify-center px-6 py-10 relative z-10">
+            <!-- Email Screen -->
+            <div id="emailScreen" class="w-full max-w-md animate-slide-up card p-8 backdrop-blur-sm">
+                <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Welcome Back</h2>
+                
+                <form id="emailForm" class="space-y-6">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                        <div class="relative rounded-lg overflow-hidden">
+                            <input type="email" id="email" name="email" 
+                                class="input-modern" 
+                                placeholder="Enter Your Email Address" 
+                                value="kelvinbaidoo03@gmail.com" required>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <button type="button" class="text-gray-400 hover:text-gray-500 focus:outline-none btn-icon" title="Help">
+                                    <i class="fas fa-question-circle text-xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="btn-primary w-full">
+                            Proceed
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Password Screen (hidden initially) -->
+            <div id="passwordScreen" class="hidden w-full max-w-md animate-slide-up card p-8 backdrop-blur-sm">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-3">Sign In</h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Signed in as: <span id="userEmail" class="font-medium text-bcm-accent">kelvinbaidoo03@gmail.com</span></p>
+                </div>
+                
+                <form id="passwordForm" class="space-y-6">
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                        <div class="relative rounded-lg overflow-hidden">
+                            <input type="password" id="password" name="password" 
+                                class="input-modern" 
+                                placeholder="Enter Your Password" 
+                                value="Hulkmode776" required>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <button type="button" id="togglePassword" class="text-gray-400 hover:text-gray-500 focus:outline-none btn-icon">
+                                    <i class="fas fa-eye text-xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="rememberMe" name="rememberMe" type="checkbox" class="h-4 w-4 text-bcm-accent focus:ring-bcm-accent border-gray-300 rounded">
+                            <label for="rememberMe" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                                Remember me
+                            </label>
+                        </div>
+                        
+                        <div class="text-sm">
+                            <a href="#" class="font-medium text-bcm-accent hover:text-bcm-burgundy dark:hover:text-bcm-accent2">
+                                Forgot password?
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button type="button" id="backToEmail" class="btn-secondary flex-1">
+                            Back
+                        </button>
+                        <button type="submit" class="btn-primary flex-1">
+                            Sign In
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 text-center text-gray-500 dark:text-gray-400 text-sm mt-auto relative z-10">
+            © 2025 Baylor College of Medicine. All rights reserved.
+        </div>
     </div>
-  </div>
-
-  <div class="container" style="display: none;">
-    <div class="sidebar">
-      <div class="student-photo">
-        <img src="https://i.ibb.co/jbdPrqk/download.jpg" alt="Student Photo">
-      </div>
-      <h2>Baylor University</h2>
-      <ul>
-        <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
-        <li><a href="#" onclick="showSection('statement')">Statement of Results</a></li>
-        <li><a href="#" onclick="showSection('timetable')">Timetable</a></li>
-        <li><a href="#" onclick="showSection('registration')">Course Registration</a></li>
-        <li><a href="#" onclick="showSection('fees')">Fees and Accommodation</a></li>
-        <li><a href="#" onclick="showSection('awards')">Awards</a></li>
-        <li><a href="#" onclick="showSection('sip')">SIP</a></li>
-        <li><a href="#" onclick="showSection('messages')">Messages</a></li>
-        <li><a href="#" onclick="showSection('competition-registration')">Competition Registration</a></li>
-        <li><a href="#" onclick="showSection('placement')">Placement</a></li>
-      </ul>
+    
+    <!-- Main Application -->
+    <div id="mainApp" class="hidden min-h-screen flex flex-col bg-bcm-gray dark:bg-gray-900">
+        <!-- Navigation -->
+        <nav class="bg-gradient-to-r from-bcm-blue to-bcm-blue-light dark:nav-gradient text-white shadow-lg">
+            <div class="mx-auto px-4">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-3">
+                        <!-- Small BCM logo for nav -->
+                        <svg class="w-9 h-auto" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <path d="M50 40C85 40 105 55 105 80C105 95 95 105 80 110C100 115 115 130 115 150C115 175 95 190 55 190H10V40H50Z" fill="white"/>
+                                <path d="M50 100H40V160H55C75 160 85 155 85 140C85 125 75 120 55 120C60 110 75 105 75 85C75 65 65 60 50 60H40V100H50Z" fill="white"/>
+                                
+                                <path d="M150 40C200 40 240 60 240 115C240 170 200 190 150 190C100 190 60 170 60 115C60 60 100 40 150 40Z" fill="white"/>
+                                <path d="M150 60C115 60 95 80 95 115C95 150 115 170 150 170C185 170 205 150 205 115C205 80 185 60 150 60Z" fill="white"/>
+                                
+                                <path d="M270 40H320L350 140L380 40H430V190H400V80L360 190H340L300 80V190H270V40Z" fill="white"/>
+                            </g>
+                        </svg>
+                        <span class="text-xl font-semibold">Portal</span>
+                    </div>
+                    
+                    <div class="hidden md:flex space-x-1">
+                        <button id="navDashboard" class="px-3 py-2 rounded-md font-medium hover:bg-bcm-burgundy focus:outline-none focus:bg-bcm-burgundy transition-colors">Dashboard</button>
+                        <button id="navCourses" class="px-3 py-2 rounded-md font-medium hover:bg-bcm-burgundy focus:outline-none focus:bg-bcm-burgundy transition-colors">Courses</button>
+                        <button id="navExams" class="px-3 py-2 rounded-md font-medium hover:bg-bcm-burgundy focus:outline-none focus:bg-bcm-burgundy transition-colors">Exams</button>
+                        <button id="navGrades" class="px-3 py-2 rounded-md font-medium hover:bg-bcm-burgundy focus:outline-none focus:bg-bcm-burgundy transition-colors">Grades</button>
+                        <button id="navAwards" class="px-3 py-2 rounded-md font-medium hover:bg-bcm-burgundy focus:outline-none focus:bg-bcm-burgundy transition-colors">Awards</button>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <button id="profileButton" class="flex items-center space-x-2 focus:outline-none hover:opacity-85 transition-opacity">
+                            <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center text-bcm-blue font-bold shadow-md">K</div>
+                            <span class="hidden md:inline">Kelvin Baidoo</span>
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="md:hidden">
+                        <button id="mobileMenuButton" class="text-white focus:outline-none btn-icon">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden bg-bcm-burgundy backdrop-blur-md border-t border-white/10">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <button id="mobileNavDashboard" class="block w-full text-left px-3 py-2 rounded-md font-medium hover:bg-bcm-blue focus:outline-none focus:bg-bcm-blue transition-colors">
+                        <i class="fas fa-chart-pie mr-2"></i> Dashboard
+                    </button>
+                    <button id="mobileNavCourses" class="block w-full text-left px-3 py-2 rounded-md font-medium hover:bg-bcm-blue focus:outline-none focus:bg-bcm-blue transition-colors">
+                        <i class="fas fa-book mr-2"></i> Courses
+                    </button>
+                    <button id="mobileNavExams" class="block w-full text-left px-3 py-2 rounded-md font-medium hover:bg-bcm-blue focus:outline-none focus:bg-bcm-blue transition-colors">
+                        <i class="fas fa-clipboard-check mr-2"></i> Exams
+                    </button>
+                    <button id="mobileNavGrades" class="block w-full text-left px-3 py-2 rounded-md font-medium hover:bg-bcm-blue focus:outline-none focus:bg-bcm-blue transition-colors">
+                        <i class="fas fa-chart-line mr-2"></i> Grades
+                    </button>
+                    <button id="mobileNavAwards" class="block w-full text-left px-3 py-2 rounded-md font-medium hover:bg-bcm-blue focus:outline-none focus:bg-bcm-blue transition-colors">
+                        <i class="fas fa-trophy mr-2"></i> Awards
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Profile dropdown -->
+        <div id="profileDropdown" class="hidden absolute right-4 mt-16 w-52 rounded-xl shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-10 animate-slide-down card overflow-hidden">
+            <div class="py-1">
+                <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Signed in as</p>
+                    <p class="text-sm font-medium text-gray-900 dark:text-white">kelvinbaidoo03@gmail.com</p>
+                </div>
+                <button id="profileSettingsButton" class="w-full text-left block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-user-circle mr-2"></i> Profile
+                </button>
+                <button id="logoutButton" class="w-full text-left block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Sign out
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <main class="flex-grow p-4 md:p-6">
+            <div id="contentContainer" class="max-w-6xl mx-auto">
+                <!-- Content will be loaded here -->
+            </div>
+        </main>
     </div>
-
-    <div class="content">
-      <div class="content-section active" id="dashboard">
-        <div class="dashboard-header">
-          <h2>Dashboard</h2>
-          <div class="student-id">
-            <span id="student-name"></span> <span id="student-id-number"></span>
-          </div>
+    
+    <!-- Profile Modal -->
+    <div id="profileModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4 z-20">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-md animate-scale-in overflow-hidden">
+            <div class="relative">
+                <div class="h-28 bg-gradient-to-r from-bcm-blue to-bcm-blue-light"></div>
+                <button id="closeProfileModal" class="absolute top-3 right-3 text-white hover:text-gray-200 focus:outline-none btn-icon bg-black/20 backdrop-blur-sm">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="flex justify-center">
+                    <div class="w-20 h-20 rounded-full bg-bcm-blue flex items-center justify-center text-white text-2xl font-bold border-4 border-white dark:border-gray-800 absolute -bottom-10 shadow-lg">
+                        K
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6 pt-12">
+                <div class="text-center mb-6">
+                    <h4 class="font-medium text-xl text-gray-900 dark:text-white">Kelvin Baidoo</h4>
+                    <p class="text-gray-500 dark:text-gray-400">ID: 123456789</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex justify-between p-3 bg-gray-50 dark:bg-gray-700/30 rounded-lg">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Email</label>
+                            <p class="text-gray-900 dark:text-white">kelvinbaidoo03@gmail.com</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between p-3 bg-gray-50 dark:bg-gray-700/30 rounded-lg">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Program</label>
+                            <p class="text-gray-900 dark:text-white">Medical Doctor (MD) Program</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300">
+                            <i class="fas fa-graduation-cap text-sm"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between p-3 bg-gray-50 dark:bg-gray-700/30 rounded-lg">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Year</label>
+                            <p class="text-gray-900 dark:text-white">3rd Year</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300">
+                            <i class="fas fa-calendar-alt text-sm"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between p-3 bg-gray-50 dark:bg-gray-700/30 rounded-lg">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Advisor</label>
+                            <p class="text-gray-900 dark:text-white">Dr. Michelle Carter</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300">
+                            <i class="fas fa-user-md text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-700/50 px-4 py-3 flex justify-end rounded-b-lg">
+                <button id="closeProfileBtn" class="btn-primary">
+                    Close
+                </button>
+            </div>
         </div>
-        <div class="dashboard-grid">
-          <div class="dashboard-item welcome-message">
-            <p>Welcome back,</p>
-            <h3 id="greeting-name"></h3>
-            <p>Registration Number: <span id="reg-number"></span></p>
-          </div>
-          <div class="dashboard-item">
-            <p>Program: Medicine</p>
-            <p>Hall: Teal Hall</p>
-          </div>
-          <div class="dashboard-item">
-            <p>GPS Address: 1311 S 5th St, Waco, TX 76706, USA</p>
-            <p>Postal Address: Baylor University, One Bear Place #97096, Waco, TX 76798-7096, USA</p>
-          </div>
+    </div>
+    
+    <!-- All Courses Modal -->
+    <div id="allCoursesModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4 z-20">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-5xl h-[80vh] flex flex-col animate-scale-in">
+            <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-700 p-4">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">All Courses</h3>
+                <button id="closeCoursesModal" class="text-gray-400 hover:text-gray-500 focus:outline-none btn-icon">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-grow">
+                <div class="flex justify-between items-center mb-4">
+                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white">Course History</h4>
+                    <select id="modalTermFilter" class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-lg py-2 px-4 shadow-sm focus:outline-none focus:ring-1 focus:ring-bcm-accent focus:border-bcm-accent">
+                        <option value="all">All Terms</option>
+                        <option value="Spring 2025">Spring 2025</option>
+                        <option value="Fall 2024">Fall 2024</option>
+                        <option value="Spring 2024">Spring 2024</option>
+                        <option value="Fall 2023">Fall 2023</option>
+                    </select>
+                </div>
+                
+                <div id="modalCoursesList">
+                    <!-- Will be populated dynamically -->
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-700/50 px-4 py-3 flex justify-end rounded-b-lg border-t border-gray-200 dark:border-gray-700">
+                <button id="closeCoursesBtn" class="btn-primary">
+                    Close
+                </button>
+            </div>
         </div>
-        <div class="news-feed">
-          <h3>Student News</h3>
-          <div class="news-item">
-            <div class="news-header">
-              <h4>2025/2026 Annual Medical School Competition</h4>
-              <span class="news-date">September 30th</span>
+    </div>
+    
+    <!-- All Announcements Modal -->
+    <div id="allAnnouncementsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4 z-20">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-3xl h-[80vh] flex flex-col animate-scale-in">
+            <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-700 p-4">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">All Announcements</h3>
+                <button id="closeAnnouncementsModal" class="text-gray-400 hover:text-gray-500 focus:outline-none btn-icon">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            <p>Don't miss the annual Baylor Medical School competition! Network with top schools in healthcare and beyond. Prepare yourself and get ready as your school battles its way to the top. Current competitors for the school are Kelvin Bright Baidoo, Allison Perkton, Sophia Merrly, Mekayla Ashborn, Michael Plum, and Somaya Pragh. Support them as they prepare for the competition.</p>
-          </div>
-          <div class="news-item">
-            <div class="news-header">
-              <h4>DEBATES</h4>
-              <span class="news-date">November 20th</span>
+            <div class="p-6 overflow-y-auto flex-grow">
+                <div id="modalAnnouncementsList">
+                    <!-- Will be populated dynamically -->
+                </div>
             </div>
-            <p>We Did It! 🏆
-
-Baylor College of Medicine has done it again! 💪 Our debate team just crushed the competition in the "Atheism vs Theism" showdown, going head-to-head with top schools and emerging as champions. 🎉 Their wit, passion, and flawless arguments left everyone in awe.  
-
-A huge congratulations to our incredible team—you’ve shown the world what Baylor excellence is all about! 🌟🙌</p>
-          </div>
+            <div class="bg-gray-50 dark:bg-gray-700/50 px-4 py-3 flex justify-end rounded-b-lg border-t border-gray-200 dark:border-gray-700">
+                <button id="closeAnnouncementsBtn" class="btn-primary">
+                    Close
+                </button>
+            </div>
         </div>
-      </div>
+    </div>
+    
+    <script>
+        // Updated Student Data (2023-2025)
+        const studentData = {
+            name: 'Kelvin Baidoo',
+            id: '123456789',
+            email: 'kelvinbaidoo03@gmail.com',
+            program: 'Medical Doctor (MD) Program',
+            year: '3rd Year',
+            advisor: 'Dr. Michelle Carter',
+            college: 'Baylor College of Medicine',
+            currentTerm: 'Spring 2025',
+            gpa: '4.0',
+            courses: [
+                { id: 'MED425', name: 'Advanced Clinical Pathophysiology', instructor: 'Dr. James Wilson', credits: 4, year: '2025', term: 'Spring', grade: 'A' },
+                { id: 'MED418', name: 'Medical Genetics & Genomics', instructor: 'Dr. Sarah Reynolds', credits: 3, year: '2025', term: 'Spring', grade: 'A' },
+                { id: 'MED412', name: 'Immunology & Infectious Disease', instructor: 'Dr. Michael Chen', credits: 4, year: '2025', term: 'Spring', grade: 'A' },
+                { id: 'MED405', name: 'Clinical Neuroscience', instructor: 'Dr. Priya Sharma', credits: 4, year: '2024', term: 'Fall', grade: 'A' },
+                { id: 'MED391', name: 'Advanced Pharmacology', instructor: 'Dr. Robert Johnson', credits: 3, year: '2024', term: 'Fall', grade: 'A' },
+                { id: 'MED387', name: 'Medical Ethics & Professionalism', instructor: 'Dr. Lisa Brown', credits: 2, year: '2024', term: 'Fall', grade: 'A' },
+                { id: 'MED376', name: 'Cardiovascular Systems', instructor: 'Dr. David Thompson', credits: 4, year: '2024', term: 'Spring', grade: 'A' },
+                { id: 'MED368', name: 'Clinical Diagnostics', instructor: 'Dr. Elizabeth Wu', credits: 3, year: '2024', term: 'Spring', grade: 'A' },
+                { id: 'MED352', name: 'Medical Biochemistry', instructor: 'Dr. Thomas Garcia', credits: 4, year: '2023', term: 'Fall', grade: 'A' },
+                { id: 'MED348', name: 'Human Anatomy & Physiology', instructor: 'Dr. Jennifer Martinez', credits: 5, year: '2023', term: 'Fall', grade: 'A' }
+            ],
+            exams: [
+                { 
+                    id: 'USMLE1',
+                    name: 'USMLE Step 1',
+                    date: '2024-06-15',
+                    score: 258,
+                    percentile: 98,
+                    status: 'Passed',
+                    subjects: [
+                        { name: 'Anatomy', score: 94 },
+                        { name: 'Biochemistry', score: 96 },
+                        { name: 'Physiology', score: 97 },
+                        { name: 'Pathology', score: 95 },
+                        { name: 'Pharmacology', score: 93 }
+                    ]
+                },
+                { 
+                    id: 'CBSE2024',
+                    name: 'Comprehensive Basic Science Examination',
+                    date: '2024-03-10',
+                    score: 92,
+                    percentile: 95,
+                    status: 'Passed',
+                    subjects: [
+                        { name: 'Medical Knowledge', score: 93 },
+                        { name: 'Clinical Reasoning', score: 92 },
+                        { name: 'Scientific Concepts', score: 94 }
+                    ]
+                },
+                { 
+                    id: 'OSCE2023',
+                    name: 'Objective Structured Clinical Examination',
+                    date: '2023-11-22',
+                    score: 95,
+                    percentile: 97,
+                    status: 'Passed',
+                    subjects: [
+                        { name: 'Patient Communication', score: 96 },
+                        { name: 'Physical Examination', score: 94 },
+                        { name: 'Clinical Skills', score: 95 },
+                        { name: 'Professionalism', score: 97 }
+                    ]
+                }
+            ],
+            rotations: [
+                { 
+                    name: 'Internal Medicine',
+                    hospital: 'Ben Taub Hospital',
+                    period: 'Jan-Mar 2025',
+                    evaluation: 'Excellent',
+                    grade: 'A'
+                },
+                { 
+                    name: 'Pediatrics',
+                    hospital: 'Texas Children\'s Hospital',
+                    period: 'Oct-Dec 2024',
+                    evaluation: 'Outstanding',
+                    grade: 'A'
+                },
+                { 
+                    name: 'Surgery',
+                    hospital: 'St. Luke\'s Medical Center',
+                    period: 'Jul-Sep 2024',
+                    evaluation: 'Excellent',
+                    grade: 'A'
+                }
+            ],
+            announcements: [
+                { id: 1, title: 'USMLE Step 2 Registration Open', date: '2025-02-15', content: 'Registration for the USMLE Step 2 examination is now open. Please schedule your exam date by April 30th to ensure your preferred testing location and time.' },
+                { id: 2, title: 'Residency Application Workshop', date: '2025-01-20', content: 'A workshop on residency applications will be held on March 5th in Cullen Auditorium from 2-4PM. All third-year students are encouraged to attend this important session.' },
+                { id: 3, title: 'Curriculum Updates for 2025-2026', date: '2025-01-10', content: 'Important changes to the clinical rotation schedule will be implemented starting in the Fall 2025 semester. Virtual town hall meetings will be held next week to discuss these changes.' },
+                { id: 4, title: 'Medical Research Symposium', date: '2024-12-05', content: 'The annual Medical Research Symposium will be held on January 15th, 2025. Submit your research abstracts by December 20th if you wish to present your work.' },
+                { id: 5, title: 'Holiday Schedule for Clinical Rotations', date: '2024-11-30', content: 'Please note the modified schedule for clinical rotations during the holiday season. Refer to the attached document for specific dates and coverage requirements.' },
+                { id: 6, title: 'Community Outreach Opportunity', date: '2024-11-15', content: 'Join us for a community health screening event at the Third Ward Community Center on December 8th. This is an excellent opportunity to gain clinical experience while serving our community.' },
+                { id: 7, title: 'NBME Subject Exam Schedule Released', date: '2024-10-25', content: 'The schedule for NBME subject examinations for the Spring 2025 semester has been released. Please review the dates and prepare accordingly.' }
+            ],
+            awards: [
+                { 
+                    id: 1, 
+                    name: "Dean's Excellence Award", 
+                    date: "2025-01", 
+                    description: "Awarded for maintaining a perfect 4.0 GPA throughout the medical program.",
+                    category: "Academic Excellence",
+                    color: "gold",
+                    icon: "trophy"
+                },
+                { 
+                    id: 2, 
+                    name: "Outstanding Research in Neuroscience", 
+                    date: "2024-11", 
+                    description: "Recognition for exceptional research contribution in the field of neuroscience.",
+                    category: "Research",
+                    color: "blue",
+                    icon: "microscope"
+                },
+                { 
+                    id: 3, 
+                    name: "Clinical Excellence in Pediatrics", 
+                    date: "2024-10", 
+                    description: "Awarded for outstanding performance during pediatrics clinical rotation.",
+                    category: "Clinical Excellence",
+                    color: "green",
+                    icon: "stethoscope"
+                },
+                { 
+                    id: 4, 
+                    name: "Leadership in Medical Education", 
+                    date: "2024-09", 
+                    description: "Recognized for excellent peer tutoring and educational leadership.",
+                    category: "Leadership",
+                    color: "purple",
+                    icon: "users"
+                },
+                { 
+                    id: 5, 
+                    name: "Community Health Service Award", 
+                    date: "2024-07", 
+                    description: "Awarded for dedication to community health initiatives and volunteer service.",
+                    category: "Service",
+                    color: "red",
+                    icon: "heart"
+                },
+                { 
+                    id: 6, 
+                    name: "Exceptional Performance in Pathophysiology", 
+                    date: "2024-06", 
+                    description: "Recognition for top performance in Advanced Clinical Pathophysiology course.",
+                    category: "Academic Excellence",
+                    color: "gold",
+                    icon: "book-medical"
+                },
+                { 
+                    id: 7, 
+                    name: "Research Publication Award", 
+                    date: "2024-05", 
+                    description: "Awarded for publication in the Journal of Medical Research.",
+                    category: "Research",
+                    color: "blue",
+                    icon: "newspaper"
+                },
+                { 
+                    id: 8, 
+                    name: "Clinical Skills Excellence", 
+                    date: "2024-04", 
+                    description: "Recognition for exceptional patient care skills during clinical rotations.",
+                    category: "Clinical Excellence",
+                    color: "green",
+                    icon: "user-md"
+                },
+                { 
+                    id: 9, 
+                    name: "Medical Ethics Distinction", 
+                    date: "2024-03", 
+                    description: "Awarded for outstanding contributions to medical ethics discussions and research.",
+                    category: "Academic Excellence",
+                    color: "purple",
+                    icon: "balance-scale"
+                },
+                { 
+                    id: 10, 
+                    name: "Global Health Initiative Recognition", 
+                    date: "2024-02", 
+                    description: "Acknowledged for participation in international medical outreach program.",
+                    category: "Service",
+                    color: "red",
+                    icon: "globe-americas"
+                },
+                { 
+                    id: 11, 
+                    name: "Pharmacology Merit Award", 
+                    date: "2024-01", 
+                    description: "Recognition for excellence in Advanced Pharmacology studies.",
+                    category: "Academic Excellence",
+                    color: "gold",
+                    icon: "pills"
+                },
+                { 
+                    id: 12, 
+                    name: "Innovation in Medical Technology", 
+                    date: "2023-12", 
+                    description: "Awarded for developing innovative approaches to medical technology applications.",
+                    category: "Innovation",
+                    color: "blue",
+                    icon: "laptop-medical"
+                },
+                { 
+                    id: 13, 
+                    name: "Anatomy & Physiology Excellence", 
+                    date: "2023-11", 
+                    description: "Recognition for outstanding performance in Human Anatomy & Physiology.",
+                    category: "Academic Excellence",
+                    color: "gold",
+                    icon: "bone"
+                },
+                { 
+                    id: 14, 
+                    name: "Student Mentor of the Year", 
+                    date: "2023-10", 
+                    description: "Awarded for exceptional mentorship to first-year medical students.",
+                    category: "Leadership",
+                    color: "purple",
+                    icon: "chalkboard-teacher"
+                },
+                { 
+                    id: 15, 
+                    name: "Clinical Diagnostics Achievement", 
+                    date: "2023-08", 
+                    description: "Recognition for excellence in clinical diagnostics methodologies.",
+                    category: "Clinical Excellence",
+                    color: "green",
+                    icon: "diagnoses"
+                },
+                { 
+                    id: 16, 
+                    name: "Medical Research Presentation Award", 
+                    date: "2023-07", 
+                    description: "Awarded for outstanding research presentation at the Medical Student Symposium.",
+                    category: "Research",
+                    color: "blue",
+                    icon: "chart-line"
+                },
+                { 
+                    id: 17, 
+                    name: "Community Health Advocacy Award", 
+                    date: "2023-06", 
+                    description: "Recognition for leadership in community health advocacy initiatives.",
+                    category: "Service",
+                    color: "red",
+                    icon: "hands-helping"
+                },
+                { 
+                    id: 18, 
+                    name: "Excellence in Medical Writing", 
+                    date: "2023-05", 
+                    description: "Awarded for exceptional scientific writing and research documentation.",
+                    category: "Academic Excellence",
+                    color: "gold",
+                    icon: "pen-fancy"
+                },
+                { 
+                    id: 19, 
+                    name: "Cardiovascular Research Recognition", 
+                    date: "2023-04", 
+                    description: "Acknowledged for contributions to cardiovascular research projects.",
+                    category: "Research",
+                    color: "blue",
+                    icon: "heartbeat"
+                },
+                { 
+                    id: 20, 
+                    name: "Patient Communication Excellence", 
+                    date: "2023-03", 
+                    description: "Recognition for outstanding patient communication skills during clinical training.",
+                    category: "Clinical Excellence",
+                    color: "green",
+                    icon: "comments"
+                },
+                { 
+                    id: 21, 
+                    name: "First Year Achievement Award", 
+                    date: "2023-02", 
+                    description: "Awarded for exceptional academic and clinical performance during first year of medical studies.",
+                    category: "Academic Excellence",
+                    color: "gold",
+                    icon: "award"
+                }
+            ]
+        };
+        
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
 
-      <div class="content-section" id="statement" style="display: none;">
-        <h2>Statement of Results</h2>
-        <h3>2023/2024 Semester 1</h3>
-        <table class="details-table">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Course Title</th>
-              <th>Credit</th>
-              <th>Grade</th>
-              <th>GP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>BIO22</td>
-              <td>Biology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>COMS124</td>
-              <td>Communication Skill</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>BIO137</td>
-              <td>Microbiology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>BIO153</td>
-              <td>BioPhysics</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>BIO205</td>
-              <td>Anatomy</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>BIO211</td>
-              <td>Clinical Skills</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>PSY105</td>
-              <td>Psychology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td colspan="4">Total Credit Hours</td>
-              <td>21</td>
-            </tr>
-            <tr>
-              <td colspan="4">GPA</td>
-              <td>4.00</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3>2023/2024 Semester 2</h3>
-        <table class="details-table">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Course Title</th>
-              <th>Credit</th>
-              <th>Grade</th>
-              <th>GP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>MED201</td>
-              <td>Pharmacology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED202</td>
-              <td>Immunology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED203</td>
-              <td>Genetics</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED204</td>
-              <td>Endocrinology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED205</td>
-              <td>Cardiology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED206</td>
-              <td>Neuroscience</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED212</td>
-              <td>Emergency Training</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td colspan="4">Total Credit Hours</td>
-              <td>21</td>
-            </tr>
-            <tr>
-              <td colspan="4">GPA</td>
-              <td>4.00</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3>2024/2025 Semester 1</h3>
-        <table class="details-table">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Course Title</th>
-              <th>Credit</th>
-              <th>Grade</th>
-              <th>GP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>MED301</td>
-              <td>Advanced Pharmacology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED122</td>
-              <td>Advanced Immunology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED366</td>
-              <td>Genetic Engineering</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED314</td>
-              <td>Endocrine Disorders</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED305</td>
-              <td>Advanced Cardiology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED354</td>
-              <td>Neurobiology</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>MED307</td>
-              <td>Emergency Medicine</td>
-              <td>3</td>
-              <td>A</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td colspan="4">Total Credit Hours</td>
-              <td>21</td>
-            </tr>
-            <tr>
-              <td colspan="4">GPA</td>
-              <td>4.00</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="content-section" id="timetable" style="display: none;">
-        <h2>Timetable</h2>
-        <h3>Spring 2024</h3>
-        <table class="timetable-table">
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Monday</th>
-              <th>Tuesday</th>
-              <th>Wednesday</th>
-              <th>Thursday</th>
-              <th>Friday</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>8:00 AM - 10:30 AM</td>
-              <td>Anatomy Lab</td>
-              <td>Clinical Skills</td>
-              <td>Physiology</td>
-              <td></td>
-              <td>Gross Anatomy</td>
-            </tr>
-            <tr>
-              <td>12:00 PM - 02:30 PM</td>
-              <td>Pharmacology</td>
-              <td>Histology</td>
-              <td></td>
-              <td>Biochemistry</td>
-              <td>Medical Ethics</td>
-            </tr>
-            <tr>
-              <td>3:00 PM - 5:00 PM</td>
-              <td></td>
-              <td>Research Seminar</td>
-              <td>Pathology</td>
-              <td></td>
-              <td>Neurology Lecture</td>
-            </tr>
-            <tr>
-              <td>5:30 PM - 7:30 PM</td>
-              <td>Medical Imaging</td>
-              <td></td>
-              <td>Cardiology Rounds</td>
-              <td></td>
-              <td>Surgery Observation</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="content-section" id="registration" style="display: none;">
-        <h2>Course Registration</h2>
-        <form id="course-registration-form">
-          <label for="course-code">Course Code</label>
-          <input type="text" id="course-code" value="MED 405" required>
-          <label for="course-title">Course Title</label>
-          <input type="text" id="course-title" value="Advanced Cardiology" required>
-          <label for="course-credit">Course Credit</label>
-          <input type="number" id="course-credit" value="4" required>
-          <button type="button" onclick="registerCourse()">Register</button>
-        </form>
-      </div>
-
-      <div class="content-section" id="fees" style="display: none;">
-        <h2>Fees and Accommodation</h2>
-        <div class="fees-summary">
-          <p>School Fees: <span class="amount">$80,000/year 2023/2024</span></p>
-          <p>Accommodation: <span class="amount">$4,000/year</span></p>
-        </div>
-        <h3>Payment History 2023/2024</h3>
-        <table class="details-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Amount Paid</th>
-              <th>Balance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>28-Aug-2023</td>
-              <td>$20,000</td>
-              <td>$64,000</td>
-            </tr>
-            <tr>
-              <td>11-Sep-2023</td>
-              <td>$20,000</td>
-              <td>$44,000</td>
-            </tr>
-            <tr>
-              <td>17-Oct-2023</td>
-              <td>$20,000</td>
-              <td>$24,000</td>
-            </tr>
-            <tr>
-              <td>01-Nov-2023</td>
-              <td>$20,000</td>
-              <td>$4,000</td>
-            </tr>
-            <tr>
-              <td>14-Dec-2023</td>
-              <td>$4,000</td>
-              <td>$0</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="fees-summary">
-          <p>School Fees: <span class="amount">$90,000/year 2024/2025</span></p>
-          <p>Accommodation: <span class="amount">$4,000/year</span></p>
-        </div>
-        <h3>Payment History 2024/2025</h3>
-        <table class="details-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Amount Paid</th>
-              <th>Balance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>28-Feb-2024</td>
-              <td>$20,000</td>
-              <td>$74,000</td>
-            </tr>
-            <tr>
-              <td>11-May-2024</td>
-              <td>$20,000</td>
-              <td>$54,000</td>
-            </tr>
-            <tr>
-              <td>17-Jun-2024</td>
-              <td>$20,000</td>
-              <td>$34,000</td>
-            </tr>
-            <tr>
-              <td>01-Jul-2024</td>
-              <td>$20,000</td>
-              <td>$14,000</td>
-            </tr>
-            <tr>
-              <td>03-Jul-2024</td>
-              <td>$14,000</td>
-              <td>$0</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="content-section" id="awards" style="display: none;">
-        <h2>Awards</h2>
-        <ul class="awards-list">
-          <li>
-            <strong>Awards for First Semester Taken:</strong> 13 out of 16
-          </li>
-          <li>
-            <strong>Top Outstanding Performance:</strong> Awarded to Mr. Baidoo Bright as the best Medical student of
-            the First Year for the 2023/2024 academic year.
-          </li>
-          <li>
-            <strong>Second Time Best Medical Student:</strong> Awarded for being the best Medical student for the
-            second time.
-          </li>
-          <li>
-            <strong>Best Medical Student of 2024/2025:</strong> Awarded for being the best Medical student for the
-            2024/2025 academic year.
-          </li>
-          <li>
-            <strong>Best in Anatomy:</strong> Awarded for excellence in Anatomy studies.
-          </li>
-          <li>
-            <strong>Best in Physiology:</strong> Awarded for excellence in Physiology studies.
-          </li>
-          <li>
-            <strong>Outstanding Clinical Skills:</strong> Recognized for exceptional clinical skills.
-          </li>
-          <li>
-            <strong>Best in Pharmacology:</strong> Awarded for excellence in Pharmacology studies.
-          </li>
-          <li>
-            <strong>Best in Pathology:</strong> Awarded for excellence in Pathology studies.
-          </li>
-          <li>
-            <strong>Best in Microbiology:</strong> Awarded for excellence in Microbiology studies.
-          </li>
-          <li>
-            <strong>Best in Public Health Presentation:</strong> Recognized for outstanding presentation in Public
-            Health.
-          </li>
-          <li>
-            <strong>Community Service Award:</strong> Awarded for exemplary community service.
-          </li>
-          <li>
-            <strong>Best in Endocrinology:</strong> Awarded for excellence in Endocrinology studies.
-          </li>
-          <li>
-            <strong>Best in Genetics:</strong> Awarded for excellence in Genetics studies.
-          </li>
-          <li>
-            <strong>Leadership Award:</strong> Awarded for outstanding leadership qualities.
-          </li>
-          <li>
-            <strong>Top Academic Performance:</strong> Recognized for top academic performance.
-          </li>
-          <li>
-            <strong>Best in Advanced Pharmacology:</strong> Awarded for excellence in Advanced Pharmacology studies.
-          </li>
-          <li>
-            <strong>Best in Advanced Immunology:</strong> Awarded for excellence in Advanced Immunology studies.
-          </li>
-          <li>
-            <strong>Best in Genetic Engineering:</strong> Awarded for excellence in Genetic Engineering studies.
-          </li>
-          <li>
-            <strong>Best in Endocrine Disorders:</strong> Awarded for excellence in Endocrine Disorders studies.
-          </li>
-          <li>
-            <strong>Best in Advanced Cardiology:</strong> Awarded for excellence in Advanced Cardiology studies.
-          </li>
-          <li>
-            <strong>Best in Neurobiology:</strong> Awarded for excellence in Neurobiology studies.
-          </li>
-          <li>
-            <strong>Best in Emergency Medicine:</strong> Awarded for best in Emergency Medicine studies in 2024/2025
-          </li>
-          <li>
-            <strong>Best in Practical Medicine:</strong> Awarded for best in Practical Medicine studies in 2024/2025.
-          </li>
-          <li>
-            <strong>10 awards taken out of 10:</strong> 10 awards taken this semester
-          </li>
-        </ul>
-      </div>
-
-      <div class="content-section" id="sip" style="display: none;">
-        <h2>Student Internship Program (SIP)</h2>
-        <h3>Current Placement:</h3>
-        <p>Texas Children's Hospital, Houston</p>
-        <p>Department: Pediatric Cardiology</p>
-        <p>Supervisor: Dr. Emily Davis</p>
-        <h3>Objectives:</h3>
-        <ul>
-          <li>Gain hands-on experience in diagnosing and treating congenital heart defects.</li>
-          <li>Assist in cardiac catheterization procedures.</li>
-          <li>Participate in patient rounds and conferences.</li>
-        </ul>
-        <h3>Evaluations:</h3>
-        <p>Midterm Evaluation: August 15, 2024</p>
-        <p>Final Evaluation: December 15, 2024</p>
-        <p>
-          <a href="#">View Evaluation Form</a> <a href="#">Submit Evaluation</a>
-        </p>
-      </div>
-
-      <div class="content-section" id="messages" style="display: none;">
-        <h2>Messages</h2>
-        <div class="messages-container">
-          <div class="message-item">
-            <div class="message-header">
-              <span class="message-sender">School Board</span>
-              <span class="message-date">28th November</span>
-            </div>
-            <div class="message-body">
-              <p>20 awards worth a total of 104,000 have been exchanged for the cash balance you requested. You no longer have access to these awards, as they’ve been traded for the equivalent cash value.</p>
-            </div>
-          </div>
-          <div class="message-item">
-            <div class="message-header">
-              <span class="message-sender">Dean</span>
-              <span class="message-date">29th November</span>
-            </div>
-            <div class="message-body">
-              <p>A mini ceremony would be held to award the positions to the 2nd and 3rd person, earning the fourth person a seat within 3rd place. Thank you for youer compliance</p>
-            </div>
-          </div>
-          <div class="message-item">
-            <div class="message-header">
-              <span class="message-sender">Philips Exeter Academy</span>
-              <span class="message-date">5th Novemeber</span>
-            </div>
-            <div class="message-body">
-              <p>SCHOLARSHIP REVOCATION. Next of Kin scholarship has officially been revoked.</p>
-            </div>
-          </div>
-          <div class="message-item">
-            <div class="message-header">
-              <span class="message-sender">School Board</span>
-              <span class="message-date">5th November ago</span>
-            </div>
-            <div class="message-body">
-              <p>As part of the program, contestants would aslso be compete with their chosen kins in a special upcoming round.Please prepare as more information would be communicated.They would still be having theirinterviews at the scheduled times unless otherwise.</p>
-            </div>
-          </div>
-        </div>
-        <div id="confetti-animation" class="confetti-animation"></div>
-      </div>
-
-      <div class="content-section" id="competition-registration" style="display: none;">
-        <h2>Competition Registration</h2>
-        <form id="competition-form">
-          <label for="competition-name">Name:</label>
-          <input type="text" id="competition-name" required>
-
-          <label for="competition-school">School:</label>
-          <input type="text" id="competition-school" required>
-
-          <label for="competition-id">School ID:</label>
-          <input type="text" id="competition-id" required>
-
-          <button type="button" onclick="registerForCompetition()">Register</button>
-          <button type="button" onclick="showParticipatingSchools()">Participating Schools</button>
-        </form>
-        <div id="participating-schools" style="display:none;"></div>
-        <div id="registration-message"></div>
-      </div>
-
-      <div class="content-section" id="placement" style="display: none;">
-        <h2>Round 1</h2>
-        <table id="placement-table-1">
-          <thead>
-            <tr>
-              <th>School</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Baylor College of Medicine</td>
-              <td>43</td>
-            </tr>
-            <tr>
-              <td>University of Pennsylvania School of Medicine</td>
-              <td>41</td>
-            </tr>
-            <tr>
-              <td>Harvard Medical School</td>
-              <td>39</td>
-            </tr>
-            <tr>
-              <td>Stanford University School of Medicine</td>
-              <td>40</td>
-            </tr>
-            <tr>
-              <td>Johns Hopkins University School of Medicine</td>
-              <td>43</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>Round 2</h2>
-        <table id="placement-table-3">
-          <thead>
-            <tr>
-              <th>School</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Baylor College of Medicine</td>
-              <td>32</td>
-            </tr>
-            <tr>
-              <td>University of Pennsylvania School of Medicine</td>
-              <td>39.5</td>
-            </tr>
-            <tr>
-              <td>Harvard Medical School</td>
-              <td>45</td>
-            </tr>
-            <tr>
-              <td>Stanford University School of Medicine</td>
-              <td>40</td>
-            </tr>
-            <tr>
-              <td>Johns Hopkins University School of Medicine</td>
-              <td>42</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>Round 3</h2>
-        <table id="placement-table-2">
-          <thead>
-            <tr>
-              <th>School</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Baylor College of Medicine</td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <td>University of Pennsylvania School of Medicine</td>
-              <td>43.5</td>
-            </tr>
-            <tr>
-              <td>Harvard Medical School</td>
-              <td>48.5</td>
-            </tr>
-            <tr>
-              <td>Stanford University School of Medicine</td>
-              <td>40</td>
-            </tr>
-            <tr>
-              <td>Johns Hopkins University School of Medicine</td>
-              <td>41</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>Round 4</h2>
-        <table id="placement-table-2">
-          <thead>
-            <tr>
-              <th>School</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Baylor College of Medicine</td>
-              <td>49</td>
-            </tr>
-            <tr>
-              <td>University of Pennsylvania School of Medicine</td>
-              <td>33.5</td>
-            </tr>
-            <tr>
-              <td>Harvard Medical School</td>
-              <td>43.5</td>
-            </tr>
-            <tr>
-              <td>Stanford University School of Medicine</td>
-              <td>28.65</td>
-            </tr>
-            <tr>
-              <td>Johns Hopkins University School of Medicine</td>
-              <td>44</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>Round 5</h2>
-        <table id="placement-table-2">
-          <thead>
-            <tr>
-              <th>School</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Baylor College of Medicine</td>
-              <td>48.87</td>
-            </tr>
-            <tr>
-              <td>University of Pennsylvania School of Medicine</td>
-              <td>43</td>
-            </tr>
-            <tr>
-              <td>Harvard Medical School</td>
-              <td>45.6</td>
-            </tr>
-            <tr>
-              <td>Stanford University School of Medicine</td>
-              <td>41.5</td>
-            </tr>
-            <tr>
-              <td>Johns Hopkins University School of Medicine</td>
-              <td>47.7</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> <!-- End of placement div -->
-    </div> <!-- End of content div -->
-  </div> <!-- End of container div -->
-
-  <script src="scripts.js"></script>
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+        
+        // DOM elements
+        const loginScreens = document.getElementById('loginScreens');
+        const emailScreen = document.getElementById('emailScreen');
+        const passwordScreen = document.getElementById('passwordScreen');
+        const emailForm = document.getElementById('emailForm');
+        const passwordForm = document.getElementById('passwordForm');
+        const userEmailElement = document.getElementById('userEmail');
+        const togglePasswordButton = document.getElementById('togglePassword');
+        const backToEmailButton = document.getElementById('backToEmail');
+        const mainApp = document.getElementById('mainApp');
+        const contentContainer = document.getElementById('contentContainer');
+        const profileButton = document.getElementById('profileButton');
+        const profileDropdown = document.getElementById('profileDropdown');
+        const logoutButton = document.getElementById('logoutButton');
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const profileModal = document.getElementById('profileModal');
+        const closeProfileModal = document.getElementById('closeProfileModal');
+        const closeProfileBtn = document.getElementById('closeProfileBtn');
+        const profileSettingsButton = document.getElementById('profileSettingsButton');
+        
+        // Modal elements
+        const allCoursesModal = document.getElementById('allCoursesModal');
+        const closeCoursesModal = document.getElementById('closeCoursesModal');
+        const closeCoursesBtn = document.getElementById('closeCoursesBtn');
+        const modalCoursesList = document.getElementById('modalCoursesList');
+        const modalTermFilter = document.getElementById('modalTermFilter');
+        
+        const allAnnouncementsModal = document.getElementById('allAnnouncementsModal');
+        const closeAnnouncementsModal = document.getElementById('closeAnnouncementsModal');
+        const closeAnnouncementsBtn = document.getElementById('closeAnnouncementsBtn');
+        const modalAnnouncementsList = document.getElementById('modalAnnouncementsList');
+        
+        // Navigation buttons
+        const navButtons = {
+            dashboard: [document.getElementById('navDashboard'), document.getElementById('mobileNavDashboard')],
+            courses: [document.getElementById('navCourses'), document.getElementById('mobileNavCourses')],
+            exams: [document.getElementById('navExams'), document.getElementById('mobileNavExams')],
+            grades: [document.getElementById('navGrades'), document.getElementById('mobileNavGrades')],
+            awards: [document.getElementById('navAwards'), document.getElementById('mobileNavAwards')]
+        };
+        
+        // Two-step login process
+        emailForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            if (email) {
+                // Set user email in the password screen
+                userEmailElement.textContent = email;
+                
+                // Hide email screen and show password screen
+                emailScreen.classList.add('hidden');
+                passwordScreen.classList.remove('hidden');
+                
+                // Focus on password field
+                document.getElementById('password').focus();
+            }
+        });
+        
+        // Go back to email screen
+        backToEmailButton.addEventListener('click', function() {
+            passwordScreen.classList.add('hidden');
+            emailScreen.classList.remove('hidden');
+        });
+        
+        // Toggle password visibility
+        togglePasswordButton.addEventListener('click', function() {
+            const passwordField = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Login form submission
+        passwordForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = userEmailElement.textContent;
+            const password = document.getElementById('password').value;
+            
+            // Simple mock authentication
+            if (email === 'kelvinbaidoo03@gmail.com' && password === 'Hulkmode776') {
+                loginScreens.classList.add('hidden');
+                mainApp.classList.remove('hidden');
+                
+                // Load dashboard by default
+                loadDashboard();
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
+        });
+        
+        // Toggle mobile menu
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Toggle profile dropdown
+        profileButton.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+        
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(e) {
+            if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+            
+            // Close mobile menu when clicking outside
+            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Logout button
+        logoutButton.addEventListener('click', function() {
+            mainApp.classList.add('hidden');
+            loginScreens.classList.remove('hidden');
+            emailScreen.classList.remove('hidden');
+            passwordScreen.classList.add('hidden');
+            profileDropdown.classList.add('hidden');
+        });
+        
+        // Open profile modal
+        profileSettingsButton.addEventListener('click', function() {
+            profileModal.classList.remove('hidden');
+            profileDropdown.classList.add('hidden');
+        });
+        
+        // Close profile modal
+        closeProfileModal.addEventListener('click', function() {
+            profileModal.classList.add('hidden');
+        });
+        
+        closeProfileBtn.addEventListener('click', function() {
+            profileModal.classList.add('hidden');
+        });
+        
+        // Close modal when clicking outside
+        profileModal.addEventListener('click', function(e) {
+            if (e.target === profileModal) {
+                profileModal.classList.add('hidden');
+            }
+        });
+        
+        // All Courses Modal functionality
+        function openAllCoursesModal() {
+            populateCoursesModal('all');
+            allCoursesModal.classList.remove('hidden');
+        }
+        
+        closeCoursesModal.addEventListener('click', function() {
+            allCoursesModal.classList.add('hidden');
+        });
+        
+        closeCoursesBtn.addEventListener('click', function() {
+            allCoursesModal.classList.add('hidden');
+        });
+        
+        allCoursesModal.addEventListener('click', function(e) {
+            if (e.target === allCoursesModal) {
+                allCoursesModal.classList.add('hidden');
+            }
+        });
+        
+        modalTermFilter.addEventListener('change', function() {
+            populateCoursesModal(this.value);
+        });
+        
+        function populateCoursesModal(termFilter) {
+            let filteredCourses;
+            
+            if (termFilter === 'all') {
+                filteredCourses = studentData.courses;
+            } else {
+                const [term, year] = termFilter.split(' ');
+                filteredCourses = studentData.courses.filter(c => c.term === term && c.year === year);
+            }
+            
+            modalCoursesList.innerHTML = '';
+            
+            if (filteredCourses.length === 0) {
+                modalCoursesList.innerHTML = `
+                    <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-info-circle text-4xl mb-3"></i>
+                        <p>No courses found for the selected term.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Group by year and term
+            const groupedCourses = {};
+            
+            filteredCourses.forEach(course => {
+                const key = `${course.term} ${course.year}`;
+                if (!groupedCourses[key]) {
+                    groupedCourses[key] = [];
+                }
+                groupedCourses[key].push(course);
+            });
+            
+            // Sort keys by year (descending) and term (Spring first)
+            const sortedKeys = Object.keys(groupedCourses).sort((a, b) => {
+                const [aTerm, aYear] = a.split(' ');
+                const [bTerm, bYear] = b.split(' ');
+                
+                if (aYear !== bYear) {
+                    return bYear - aYear; // Descending year
+                }
+                
+                return aTerm === 'Spring' ? -1 : 1; // Spring before Fall
+            });
+            
+            // Create HTML
+            sortedKeys.forEach(key => {
+                const courses = groupedCourses[key];
+                
+                const termSection = document.createElement('div');
+                termSection.className = 'mb-6 last:mb-0';
+                termSection.innerHTML = `
+                    <h4 class="text-md font-medium text-gray-800 dark:text-gray-200 mb-3">${key}</h4>
+                    <div class="space-y-3">
+                        ${courses.map(course => `
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/30 rounded-xl transition-all duration-300 hover:shadow-md group">
+                                <div class="flex items-center mb-2 sm:mb-0">
+                                    <div class="w-12 h-12 rounded-full bg-bcm-accent/10 flex items-center justify-center text-bcm-accent mr-3 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-book-medical"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-medium text-gray-900 dark:text-white">${course.name}</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">${course.id} · ${course.instructor}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="text-sm bg-white dark:bg-gray-800 px-2.5 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300">
+                                        ${course.credits} Credits
+                                    </div>
+                                    <div class="text-sm font-medium text-green-600 dark:text-green-400 px-2.5 py-1.5 bg-green-50 dark:bg-green-900/30 rounded-lg">
+                                        ${course.grade}
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                modalCoursesList.appendChild(termSection);
+            });
+        }
+        
+        // All Announcements Modal functionality
+        function openAllAnnouncementsModal() {
+            populateAnnouncementsModal();
+            allAnnouncementsModal.classList.remove('hidden');
+        }
+        
+        closeAnnouncementsModal.addEventListener('click', function() {
+            allAnnouncementsModal.classList.add('hidden');
+        });
+        
+        closeAnnouncementsBtn.addEventListener('click', function() {
+            allAnnouncementsModal.classList.add('hidden');
+        });
+        
+        allAnnouncementsModal.addEventListener('click', function(e) {
+            if (e.target === allAnnouncementsModal) {
+                allAnnouncementsModal.classList.add('hidden');
+            }
+        });
+        
+        function populateAnnouncementsModal() {
+            modalAnnouncementsList.innerHTML = studentData.announcements.map(announcement => `
+                <div class="border-b border-gray-100 dark:border-gray-700 py-4 last:border-b-0 hover:bg-gray-50 dark:hover:bg-gray-700/20 transition-colors p-3 rounded-lg">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">${announcement.title}</h3>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap ml-4 badge bg-gray-100 dark:bg-gray-700">
+                            ${announcement.date}
+                        </span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-3">${announcement.content}</p>
+                </div>
+            `).join('');
+        }
+        
+        // Navigation functionality
+        function setupNavigation() {
+            // Dashboard navigation
+            navButtons.dashboard.forEach(button => {
+                button.addEventListener('click', function() {
+                    loadDashboard();
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Courses navigation
+            navButtons.courses.forEach(button => {
+                button.addEventListener('click', function() {
+                    loadCourses();
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Exams navigation
+            navButtons.exams.forEach(button => {
+                button.addEventListener('click', function() {
+                    loadExams();
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Grades navigation
+            navButtons.grades.forEach(button => {
+                button.addEventListener('click', function() {
+                    loadGrades();
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Awards navigation
+            navButtons.awards.forEach(button => {
+                button.addEventListener('click', function() {
+                    loadAwards();
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+        
+        // Load dashboard content with improved layout
+        function loadDashboard() {
+            contentContainer.innerHTML = `
+                <!-- Header and Stats -->
+                <div class="mb-8">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div class="animate-slide-up">
+                            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Welcome, ${studentData.name}</h1>
+                            <p class="text-gray-600 dark:text-gray-400">${studentData.currentTerm} · MD Program · Year ${studentData.year}</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3 mt-4 md:mt-0 animate-slide-up delay-1">
+                            <div class="card flex items-center gap-3 p-3 pl-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 shadow-sm">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Current GPA</p>
+                                    <p class="font-bold text-gray-800 dark:text-white">${studentData.gpa}/4.0</p>
+                                </div>
+                            </div>
+                            <div class="card flex items-center gap-3 p-3 pl-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Credits</p>
+                                    <p class="font-bold text-gray-800 dark:text-white">${studentData.courses.reduce((total, course) => total + course.credits, 0)}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div class="card p-5 border-l-4 border-bcm-accent bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900 animate-slide-up delay-1 hover:shadow-lg transition-all duration-300 group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">Latest Exam</h3>
+                                    <p class="font-bold text-gray-800 dark:text-white mt-1 group-hover:text-bcm-accent transition-colors">
+                                        ${studentData.exams[0].name}
+                                    </p>
+                                    <div class="flex items-center mt-1 text-sm">
+                                        <span class="text-green-600 dark:text-green-400 font-medium">Score: ${studentData.exams[0].score}</span>
+                                        <span class="mx-2 text-gray-300 dark:text-gray-600">|</span>
+                                        <span class="text-gray-600 dark:text-gray-400">${new Date(studentData.exams[0].date).toLocaleDateString()}</span>
+                                    </div>
+                                </div>
+                                <div class="w-12 h-12 rounded-lg bg-bcm-blue/10 dark:bg-bcm-blue/20 flex items-center justify-center text-bcm-accent shadow-sm group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card p-5 border-l-4 border-green-500 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900 animate-slide-up delay-2 hover:shadow-lg transition-all duration-300 group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">Current Rotation</h3>
+                                    <p class="font-bold text-gray-800 dark:text-white mt-1 group-hover:text-green-500 transition-colors">
+                                        ${studentData.rotations[0].name}
+                                    </p>
+                                    <div class="flex items-center mt-1 text-sm">
+                                        <span class="text-green-600 dark:text-green-400 font-medium">${studentData.rotations[0].evaluation}</span>
+                                        <span class="mx-2 text-gray-300 dark:text-gray-600">|</span>
+                                        <span class="text-gray-600 dark:text-gray-400">${studentData.rotations[0].period}</span>
+                                    </div>
+                                </div>
+                                <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 shadow-sm group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card p-5 border-l-4 border-amber-500 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900 animate-slide-up delay-3 hover:shadow-lg transition-all duration-300 group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">Recent Award</h3>
+                                    <p class="font-bold text-gray-800 dark:text-white mt-1 group-hover:text-amber-500 transition-colors">
+                                        ${studentData.awards[0].name}
+                                    </p>
+                                    <div class="flex items-center mt-1 text-sm">
+                                        <span class="text-amber-600 dark:text-amber-400 font-medium">${studentData.awards[0].date}</span>
+                                        <span class="mx-2 text-gray-300 dark:text-gray-600">|</span>
+                                        <span class="text-gray-600 dark:text-gray-400">${studentData.awards[0].category}</span>
+                                    </div>
+                                </div>
+                                <div class="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-sm group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Content Sections -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Recent Courses -->
+                    <div class="lg:col-span-2 card p-6 animate-slide-up delay-1">
+                        <div class="flex justify-between items-center mb-5">
+                            <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Current Courses</h2>
+                            <button id="viewAllCoursesBtn" class="text-bcm-accent hover:text-bcm-burgundy dark:hover:text-bcm-accent2 text-sm font-medium flex items-center gap-1">
+                                View All
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            ${studentData.courses.filter(c => c.term === 'Spring' && c.year === '2025').map((course, index) => `
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-gray-100 dark:border-gray-700 rounded-xl hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 animate-slide-up delay-${index + 1} group">
+                                    <div class="flex items-center mb-2 sm:mb-0">
+                                        <div class="hidden sm:flex w-12 h-12 rounded-lg bg-bcm-accent/10 dark:bg-bcm-accent/20 items-center justify-center text-bcm-accent mr-3 group-hover:scale-110 transition-transform">
+                                            <i class="fas fa-book-medical"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-bcm-accent transition-colors">${course.name}</h3>
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">${course.id} · ${course.instructor}</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div class="text-sm bg-gray-100 dark:bg-gray-700 px-2.5 py-1.5 rounded-lg text-gray-600 dark:text-gray-300">
+                                            ${course.credits} Credits
+                                        </div>
+                                        <div class="text-sm font-medium text-green-600 dark:text-green-400 px-2.5 py-1.5 bg-green-50 dark:bg-green-900/30 rounded-lg">
+                                            ${course.grade}
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Announcements -->
+                    <div class="card p-6 animate-slide-up delay-2">
+                        <div class="flex justify-between items-center mb-5">
+                            <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Announcements</h2>
+                            <button id="viewAllAnnouncementsBtn" class="text-bcm-accent hover:text-bcm-burgundy dark:hover:text-bcm-accent2 text-sm font-medium flex items-center gap-1">
+                                View All
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            ${studentData.announcements.slice(0, 3).map((announcement, index) => `
+                                <div class="border-b border-gray-100 dark:border-gray-700 pb-4 last:border-b-0 last:pb-0 animate-slide-right delay-${index + 1} hover:bg-gray-50 dark:hover:bg-gray-800 p-3 rounded-lg transition-colors">
+                                    <div class="flex items-center mb-1">
+                                        <span class="mr-2 w-2 h-2 rounded-full bg-bcm-accent"></span>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">${announcement.date}</p>
+                                    </div>
+                                    <h3 class="font-medium text-gray-900 dark:text-white mb-1">${announcement.title}</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">${announcement.content}</p>
+                                    <button class="read-more-btn text-bcm-accent hover:text-bcm-burgundy dark:hover:text-bcm-accent2 text-sm font-medium mt-2 inline-flex items-center gap-1" data-id="${announcement.id}">
+                                        Read more
+                                        <i class="fas fa-chevron-right text-xs"></i>
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Exams -->
+                    <div class="lg:col-span-2 card p-6 animate-slide-up delay-3">
+                        <div class="flex justify-between items-center mb-5">
+                            <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Recent Examinations</h2>
+                            <a href="#" id="viewExamsBtn" class="text-bcm-accent hover:text-bcm-burgundy dark:hover:text-bcm-accent2 text-sm font-medium flex items-center gap-1">
+                                View All
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            ${studentData.exams.slice(0, 2).map((exam, index) => `
+                                <div class="border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900 group animate-slide-up delay-${index + 2}">
+                                    <div class="flex justify-between mb-3">
+                                        <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-bcm-accent transition-colors">${exam.name}</h3>
+                                        <span class="badge badge-success">
+                                            ${exam.status}
+                                        </span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Date: ${new Date(exam.date).toLocaleDateString()}</p>
+                                    
+                                    <div class="flex flex-wrap gap-3 mb-4">
+                                        <div class="flex-1 min-w-[100px] bg-gray-50 dark:bg-gray-700/30 p-3 rounded-lg text-center shadow-sm">
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Score</p>
+                                            <p class="font-bold text-gray-800 dark:text-white">${exam.score}</p>
+                                        </div>
+                                        <div class="flex-1 min-w-[100px] bg-gray-50 dark:bg-gray-700/30 p-3 rounded-lg text-center shadow-sm">
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Percentile</p>
+                                            <p class="font-bold text-gray-800 dark:text-white">${exam.percentile}%</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-3">
+                                        ${exam.subjects.slice(0, 3).map(subject => `
+                                            <div>
+                                                <div class="flex justify-between text-sm mb-1.5">
+                                                    <span class="text-gray-700 dark:text-gray-300">${subject.name}</span>
+                                                    <span class="font-medium text-gray-900 dark:text-white">${subject.score}%</span>
+                                                </div>
+                                                <div class="h-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                                    <div class="grade-bar" style="width: ${subject.score}%"></div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Awards -->
+                    <div class="card p-6 animate-slide-up delay-4">
+                        <div class="flex justify-between items-center mb-5">
+                            <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Recent Awards</h2>
+                            <a href="#" id="viewAwardsBtn" class="text-bcm-accent hover:text-bcm-burgundy dark:hover:text-bcm-accent2 text-sm font-medium flex items-center gap-1">
+                                View All
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            ${studentData.awards.slice(0, 3).map((award, index) => `
+                                <div class="flex items-start p-4 border border-gray-100 dark:border-gray-700 rounded-xl hover:shadow-md hover:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 group animate-slide-left delay-${index + 1}">
+                                    <div class="award-icon w-12 h-12 rounded-lg award-${award.color} flex items-center justify-center text-white mr-3 mt-1 shadow-md">
+                                        <i class="fas fa-${award.icon}"></i>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center">
+                                            <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-bcm-accent transition-colors">${award.name}</h3>
+                                        </div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">${award.category}</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">${award.date}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Setup animation for grade bars after content is loaded
+            setTimeout(() => {
+                document.querySelectorAll('.grade-bar').forEach(bar => {
+                    bar.style.width = bar.style.width;
+                });
+            }, 100);
+            
+            // Set up event listeners
+            document.getElementById('viewAllCoursesBtn').addEventListener('click', openAllCoursesModal);
+            document.getElementById('viewAllAnnouncementsBtn').addEventListener('click', openAllAnnouncementsModal);
+            
+            document.getElementById('viewExamsBtn').addEventListener('click', () => {
+                loadExams();
+            });
+            
+            document.getElementById('viewAwardsBtn').addEventListener('click', () => {
+                loadAwards();
+            });
+            
+            document.querySelectorAll('.read-more-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const announcementId = parseInt(btn.getAttribute('data-id'));
+                    openAllAnnouncementsModal();
+                });
+            });
+        }
+        
+        // Load courses content
+        function loadCourses() {
+            contentContainer.innerHTML = `
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 animate-slide-up">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">My Courses</h1>
+                        <p class="text-gray-600 dark:text-gray-400">Academic history from 2023-2025</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <select id="pageTermFilter" class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-lg py-2 px-4 shadow-sm focus:outline-none focus:ring-1 focus:ring-bcm-accent focus:border-bcm-accent">
+                            <option value="all">All Terms</option>
+                            <option value="Spring 2025">Spring 2025</option>
+                            <option value="Fall 2024">Fall 2024</option>
+                            <option value="Spring 2024">Spring 2024</option>
+                            <option value="Fall 2023">Fall 2023</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                    <div class="card p-5 animate-slide-up delay-1 hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900">
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">Total Courses</p>
+                        <h3 class="text-2xl font-bold mt-1 text-gray-900 dark:text-white">${studentData.courses.length}</h3>
+                        <div class="flex items-center mt-2 text-xs text-gray-500 dark:text-gray-400">
+                            <span>Since 2023</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-5 animate-slide-up delay-2 hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900">
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">Total Credits</p>
+                        <h3 class="text-2xl font-bold mt-1 text-gray-900 dark:text-white">${studentData.courses.reduce((total, course) => total + course.credits, 0)}</h3>
+                        <div class="flex items-center mt-2 text-xs text-gray-500 dark:text-gray-400">
+                            <span>Required: 120</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-5 animate-slide-up delay-3 hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900">
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">Current GPA</p>
+                        <h3 class="text-2xl font-bold mt-1 text-green-600 dark:text-green-400">${studentData.gpa}/4.0</h3>
+                        <div class="flex items-center mt-2 text-xs text-green-600 dark:text-green-400">
+                            <i class="fas fa-arrow-up mr-1"></i>
+                            <span>Dean's List</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-5 animate-slide-up delay-4 hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900">
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">Current Term</p>
+                        <h3 class="text-2xl font-bold mt-1 text-gray-900 dark:text-white">${studentData.currentTerm}</h3>
+                        <div class="flex items-center mt-2 text-xs text-gray-500 dark:text-gray-400">
+                            <span>In progress</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="courseHistory" class="card overflow-hidden animate-slide-up delay-2">
+                    <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-700">
+                        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Course History</h2>
+                    </div>
+                    
+                    <!-- Course Timeline -->
+                    <div class="p-6">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+            `;
+            
+            // Setup term filter
+            const pageTermFilter = document.getElementById('pageTermFilter');
+            pageTermFilter.addEventListener('change', function() {
+                updateCourseHistory(this.value);
+            });
+            
+            // Initialize course history
+            updateCourseHistory('all');
+        }
+        
+        function updateCourseHistory(termFilter) {
+            const courseHistoryContainer = document.querySelector('#courseHistory .p-6');
+            
+            // Filter courses based on selected term
+            let filteredYears;
+            
+            if (termFilter === 'all') {
+                filteredYears = ['2025', '2024', '2023'];
+            } else {
+                const [term, year] = termFilter.split(' ');
+                filteredYears = [year];
+            }
+            
+            // Build HTML for course history
+            let courseHistoryHTML = '';
+            
+            filteredYears.forEach(year => {
+                courseHistoryHTML += `<div class="mb-8 last:mb-0">
+                    <h3 class="text-lg font-medium text-bcm-accent mb-4 flex items-center">
+                        <span class="w-8 h-8 rounded-full bg-bcm-accent/10 dark:bg-bcm-accent/20 flex items-center justify-center text-bcm-accent mr-2 shadow-sm">
+                            <i class="fas fa-calendar-alt text-sm"></i>
+                        </span>
+                        ${year}
+                    </h3>`;
+                
+                ['Spring', 'Fall'].forEach(term => {
+                    if (termFilter !== 'all' && termFilter !== `${term} ${year}`) {
+                        return; // Skip terms that don't match the filter
+                    }
+                    
+                    const termCourses = studentData.courses.filter(c => c.year === year && c.term === term);
+                    if (termCourses.length === 0) return;
+                    
+                    courseHistoryHTML += `
+                        <div class="mb-6 last:mb-0 pl-10 relative before:content-[''] before:absolute before:left-4 before:top-0 before:w-0.5 before:h-full before:bg-gray-200 dark:before:bg-gray-700">
+                            <span class="absolute left-2 top-3 w-4 h-4 rounded-full bg-bcm-accent/80 z-10"></span>
+                            <h4 class="text-md font-medium text-gray-800 dark:text-gray-200 mb-3">${term} ${year}</h4>
+                            
+                            <div class="space-y-3">
+                                ${termCourses.map((course, idx) => `
+                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/30 rounded-xl group hover:shadow-md transition-all duration-300 animate-fade-in" style="animation-delay: ${0.05 * idx}s">
+                                        <div class="flex items-center mb-2 sm:mb-0">
+                                            <div class="w-12 h-12 rounded-lg bg-bcm-accent/10 dark:bg-bcm-accent/20 flex items-center justify-center text-bcm-accent mr-3 group-hover:scale-110 transition-transform">
+                                                <i class="fas fa-book-medical"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-bcm-accent transition-colors">${course.name}</h3>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">${course.id} · ${course.instructor}</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <div class="text-sm bg-white dark:bg-gray-800 px-2.5 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300">
+                                                ${course.credits} Credits
+                                            </div>
+                                            <div class="text-sm font-medium text-green-600 dark:text-green-400 px-2.5 py-1.5 bg-green-50 dark:bg-green-900/30 rounded-lg">
+                                                ${course.grade}
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                courseHistoryHTML += `</div>`;
+            });
+            
+            // If no courses match the filter
+            if (courseHistoryHTML === '') {
+                courseHistoryHTML = `
+                    <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-info-circle text-4xl mb-3"></i>
+                        <p>No courses found for the selected term.</p>
+                    </div>
+                `;
+            }
+            
+            courseHistoryContainer.innerHTML = courseHistoryHTML;
+        }
+        
+        // Load exams section
+        function loadExams() {
+            contentContainer.innerHTML = `
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 animate-slide-up">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Examinations & Evaluations</h1>
+                        <p class="text-gray-600 dark:text-gray-400">View your exam results and clinical evaluations</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <select class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-lg py-2 px-4 shadow-sm focus:outline-none focus:ring-1 focus:ring-bcm-accent focus:border-bcm-accent">
+                            <option>All Types</option>
+                            <option>Standardized Exams</option>
+                            <option>Clinical Evaluations</option>
+                            <option>In-House Assessments</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Exams Overview -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    ${studentData.exams.map((exam, index) => `
+                        <div class="card p-6 animate-slide-up delay-${index + 1} hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900 group">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-semibold text-gray-900 dark:text-white">${exam.name}</h3>
+                                <span class="badge badge-success">
+                                    ${exam.status}
+                                </span>
+                            </div>
+                            
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                                Date: ${new Date(exam.date).toLocaleDateString()}
+                            </div>
+                            
+                            <div class="flex gap-4 mb-6">
+                                <div class="flex-1 bg-bcm-accent/5 dark:bg-bcm-accent/20 p-3 rounded-lg text-center shadow-sm">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">Score</p>
+                                    <p class="text-xl font-bold text-bcm-accent">${exam.score}</p>
+                                </div>
+                                <div class="flex-1 bg-bcm-accent/5 dark:bg-bcm-accent/20 p-3 rounded-lg text-center shadow-sm">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">Percentile</p>
+                                    <p class="text-xl font-bold text-bcm-accent">${exam.percentile}%</p>
+                                </div>
+                            </div>
+                            
+                            <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-3">Subject Breakdown</h4>
+                            <div class="space-y-3">
+                                ${exam.subjects.map(subject => `
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-1.5">
+                                            <span class="text-gray-700 dark:text-gray-300">${subject.name}</span>
+                                            <span class="font-medium text-gray-900 dark:text-white">${subject.score}%</span>
+                                        </div>
+                                        <div class="h-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                            <div class="grade-bar" style="width: ${subject.score}%"></div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            
+                            <button class="mt-5 text-bcm-accent hover:text-bcm-burgundy dark:hover:text-bcm-accent2 text-sm font-medium flex items-center group-hover:gap-2 transition-all">
+                                View Detailed Report
+                                <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <!-- Clinical Rotations -->
+                <div class="card overflow-hidden animate-slide-up delay-4">
+                    <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-700">
+                        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Clinical Rotation Evaluations</h2>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="overflow-x-auto">
+                            <table class="w-full min-w-full">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-700/30 text-left border-b border-gray-100 dark:border-gray-700">
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Rotation</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Location</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Period</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Evaluation</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Grade</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+                                    ${studentData.rotations.map((rotation, index) => `
+                                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/20 transition-colors animate-fade-in" style="animation-delay: ${0.1 * index}s">
+                                            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">${rotation.name}</td>
+                                            <td class="px-4 py-3 text-gray-600 dark:text-gray-300">${rotation.hospital}</td>
+                                            <td class="px-4 py-3 text-gray-600 dark:text-gray-300">${rotation.period}</td>
+                                            <td class="px-4 py-3">
+                                                <span class="px-2 py-1 text-xs rounded-full text-green-800 bg-green-100 dark:bg-green-900/50 dark:text-green-300">
+                                                    ${rotation.evaluation}
+                                                </span>
+                                            </td>
+                                            <td class="px-4 py-3 font-medium text-green-600 dark:text-green-400">${rotation.grade}</td>
+                                            <td class="px-4 py-3">
+                                                <button class="text-bcm-accent hover:text-bcm-burgundy dark:hover:text-bcm-accent2 text-sm">
+                                                    View Details
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Exams -->
+                <div class="mt-8 card p-6 animate-slide-up delay-5">
+                    <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Upcoming Assessments</h2>
+                    
+                    <div class="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800/50 text-blue-800 dark:text-blue-200 transform transition-all duration-300 hover:scale-[1.01] hover:shadow-md">
+                        <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-800/70 flex items-center justify-center text-blue-600 dark:text-blue-300 mr-4 shadow-sm">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium mb-1">USMLE Step 2 Registration Open</h3>
+                            <p class="text-sm text-blue-700 dark:text-blue-300">Registration for USMLE Step 2 is now open. Please schedule your exam by April 30th, 2025.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 flex items-center p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-100 dark:border-amber-800/50 text-amber-800 dark:text-amber-200 transform transition-all duration-300 hover:scale-[1.01] hover:shadow-md">
+                        <div class="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-800/70 flex items-center justify-center text-amber-600 dark:text-amber-300 mr-4 shadow-sm">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium mb-1">Final Clinical Skills Assessment</h3>
+                            <p class="text-sm text-amber-700 dark:text-amber-300">Scheduled for May 15th, 2025. Comprehensive evaluation of all clinical competencies.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Setup animation for grade bars after content is loaded
+            setTimeout(() => {
+                document.querySelectorAll('.grade-bar').forEach(bar => {
+                    bar.style.width = bar.style.width;
+                });
+            }, 100);
+        }
+        
+        // Load grades content
+        function loadGrades() {
+            // Calculate semester GPAs
+            const terms = {};
+            studentData.courses.forEach(course => {
+                const key = `${course.term} ${course.year}`;
+                if (!terms[key]) {
+                    terms[key] = { courses: [], gpa: 0, credits: 0 };
+                }
+                terms[key].courses.push(course);
+            });
+            
+            // Calculate GPA (all courses have A's)
+            Object.keys(terms).forEach(term => {
+                terms[term].gpa = 4.0;
+                terms[term].credits = terms[term].courses.reduce((total, course) => total + course.credits, 0);
+            });
+            
+            contentContainer.innerHTML = `
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 animate-slide-up">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">My Grades</h1>
+                        <p class="text-gray-600 dark:text-gray-400">Academic performance from 2023-2025</p>
+                    </div>
+                </div>
+                
+                <!-- GPA Overview -->
+                <div class="card p-6 mb-8 animate-slide-up delay-1 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900">
+                    <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-5">GPA Overview</h2>
+                    
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-1 flex flex-col items-center justify-center p-6 bg-bcm-accent/5 dark:bg-bcm-accent/20 rounded-xl shadow-sm">
+                            <p class="text-gray-600 dark:text-gray-400 mb-1">Cumulative GPA</p>
+                            <p class="text-4xl font-bold text-bcm-accent">${studentData.gpa}</p>
+                            <p class="text-sm text-green-600 dark:text-green-400 mt-2 flex items-center gap-1">
+                                <i class="fas fa-check-circle"></i>
+                                Dean's List
+                            </p>
+                        </div>
+                        
+                        <div class="flex-1">
+                            <div class="mb-4">
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">GPA Distribution</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex-1 h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden shadow-inner-soft">
+                                        <div class="h-full bg-gradient-to-r from-green-500 to-emerald-400" style="width: 100%"></div>
+                                    </div>
+                                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">4.0</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                    <span>0.0</span>
+                                    <span>4.0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Credits Completed</p>
+                                    <p class="text-xl font-bold text-gray-800 dark:text-white">${studentData.courses.reduce((total, course) => total + course.credits, 0)}</p>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Courses Completed</p>
+                                    <p class="text-xl font-bold text-gray-800 dark:text-white">${studentData.courses.length}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Semester GPAs -->
+                <div class="card overflow-hidden mb-8 animate-slide-up delay-2">
+                    <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-700">
+                        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Semester Performance</h2>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="overflow-x-auto">
+                            <table class="w-full min-w-full">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-700/30 text-left border-b border-gray-100 dark:border-gray-700">
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Term</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">GPA</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Credits</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Courses</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+                                    ${Object.keys(terms).sort().reverse().map((term, index) => `
+                                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/20 transition-colors animate-fade-in" style="animation-delay: ${0.1 * index}s">
+                                            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">${term}</td>
+                                            <td class="px-4 py-3 font-medium text-green-600 dark:text-green-400">${terms[term].gpa.toFixed(1)}</td>
+                                            <td class="px-4 py-3 text-gray-600 dark:text-gray-300">${terms[term].credits}</td>
+                                            <td class="px-4 py-3 text-gray-600 dark:text-gray-300">${terms[term].courses.length}</td>
+                                            <td class="px-4 py-3">
+                                                <span class="badge badge-success">
+                                                    Dean's List
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course Grades -->
+                <div class="card overflow-hidden animate-slide-up delay-3">
+                    <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Course Grades</h2>
+                        <select id="gradeTermFilter" class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-lg py-1.5 px-3 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-bcm-accent focus:border-bcm-accent">
+                            <option value="all">All Terms</option>
+                            <option value="Spring 2025">Spring 2025</option>
+                            <option value="Fall 2024">Fall 2024</option>
+                            <option value="Spring 2024">Spring 2024</option>
+                            <option value="Fall 2023">Fall 2023</option>
+                        </select>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="overflow-x-auto">
+                            <table id="gradesTable" class="w-full min-w-full">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-700/30 text-left border-b border-gray-100 dark:border-gray-700">
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Course Code</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Course Name</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Term</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Credits</th>
+                                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+                                    <!-- Will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Set up grade filter
+            const gradeTermFilter = document.getElementById('gradeTermFilter');
+            gradeTermFilter.addEventListener('change', function() {
+                updateGradesTable(this.value);
+            });
+            
+            // Initialize grades table
+            updateGradesTable('all');
+        }
+        
+        function updateGradesTable(termFilter) {
+            const gradesTableBody = document.querySelector('#gradesTable tbody');
+            
+            // Filter courses based on selected term
+            let filteredCourses;
+            
+            if (termFilter === 'all') {
+                filteredCourses = studentData.courses;
+            } else {
+                const [term, year] = termFilter.split(' ');
+                filteredCourses = studentData.courses.filter(c => c.term === term && c.year === year);
+            }
+            
+            // Sort courses by year (descending) and term (Spring first)
+            filteredCourses.sort((a, b) => {
+                if (a.year !== b.year) {
+                    return b.year - a.year;
+                }
+                if (a.term !== b.term) {
+                    return a.term === 'Spring' ? -1 : 1;
+                }
+                return a.id.localeCompare(b.id);
+            });
+            
+            // Build rows HTML
+            gradesTableBody.innerHTML = filteredCourses.map((course, index) => `
+                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/20 transition-colors animate-fade-in" style="animation-delay: ${0.05 * index}s">
+                    <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">${course.id}</td>
+                    <td class="px-4 py-3 text-gray-800 dark:text-gray-200">${course.name}</td>
+                    <td class="px-4 py-3 text-gray-600 dark:text-gray-300">${course.term} ${course.year}</td>
+                    <td class="px-4 py-3 text-gray-600 dark:text-gray-300">${course.credits}</td>
+                    <td class="px-4 py-3 font-medium text-green-600 dark:text-green-400">${course.grade}</td>
+                </tr>
+            `).join('');
+            
+            // If no courses match the filter
+            if (filteredCourses.length === 0) {
+                gradesTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-4 py-6 text-center text-gray-500 dark:text-gray-400">
+                            No course grades found for the selected term.
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // Load awards section
+        function loadAwards() {
+            // Group awards by category
+            const categories = {};
+            studentData.awards.forEach(award => {
+                if (!categories[award.category]) {
+                    categories[award.category] = [];
+                }
+                categories[award.category].push(award);
+            });
+            
+            contentContainer.innerHTML = `
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 animate-slide-up">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Awards & Honors</h1>
+                        <p class="text-gray-600 dark:text-gray-400">Your academic and professional achievements</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <select id="awardCategoryFilter" class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-lg py-2 px-4 shadow-sm focus:outline-none focus:ring-1 focus:ring-bcm-accent focus:border-bcm-accent">
+                            <option value="all">All Categories</option>
+                            ${Object.keys(categories).map(category => 
+                                `<option value="${category}">${category}</option>`
+                            ).join('')}
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Awards Summary -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+                    <div class="bg-gradient-to-r from-bcm-blue to-bcm-accent text-white rounded-xl shadow-lg p-6 animate-slide-up delay-1 transform transition-all duration-300 hover:scale-[1.02]">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-medium text-gray-100 text-sm">Total Awards</h3>
+                                <p class="text-4xl font-bold mt-1">${studentData.awards.length}</p>
+                                <p class="text-sm mt-3">Across ${Object.keys(categories).length} categories</p>
+                            </div>
+                            <div class="w-14 h-14 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                                <i class="fas fa-award text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-6 animate-slide-up delay-2 hover:shadow-lg transition-all duration-300">
+                        <h3 class="font-medium text-gray-500 dark:text-gray-400 text-sm mb-4">Awards by Category</h3>
+                        <div class="space-y-3">
+                            ${Object.entries(categories).map(([category, awards]) => `
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1.5">
+                                        <span class="text-gray-700 dark:text-gray-300">${category}</span>
+                                        <span class="font-medium text-gray-900 dark:text-white">${awards.length}</span>
+                                    </div>
+                                    <div class="h-2.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden shadow-inner-soft">
+                                        <div class="h-full ${getCategoryColorClass(category)}" style="width: ${(awards.length / studentData.awards.length) * 100}%"></div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="card p-6 animate-slide-up delay-3 hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-bcm-gray/20 dark:from-gray-800 dark:to-gray-900">
+                        <h3 class="font-medium text-gray-500 dark:text-gray-400 text-sm mb-1">Recent Achievement</h3>
+                        <div class="mt-3">
+                            <div class="flex items-center mb-2">
+                                <div class="award-icon w-10 h-10 rounded-lg award-${studentData.awards[0].color} flex items-center justify-center text-white mr-3 shadow-md">
+                                    <i class="fas fa-${studentData.awards[0].icon}"></i>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 dark:text-white">${studentData.awards[0].name}</h4>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">${studentData.awards[0].description}</p>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-calendar-alt mr-1"></i>
+                                <span>${studentData.awards[0].date}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Award with animation -->
+                <div class="bg-gradient-to-r from-bcm-blue/5 to-bcm-accent/10 dark:from-bcm-blue/20 dark:to-bcm-accent/20 rounded-xl shadow-md p-6 mb-8 animate-slide-up delay-4 overflow-hidden relative group hover:shadow-lg transition-all duration-300">
+                    <div class="award-shimmer absolute inset-0"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row gap-6 items-center">
+                        <div class="award-icon animate-float w-24 h-24 award-gold rounded-xl shadow-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <i class="fas fa-trophy text-4xl"></i>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <h2 class="text-2xl font-bold text-bcm-blue dark:text-bcm-accent">Dean's Excellence Award</h2>
+                            <p class="text-lg text-gray-700 dark:text-gray-300 mt-1">For outstanding academic achievement</p>
+                            <p class="text-gray-600 dark:text-gray-400 mt-3 max-w-2xl">Awarded for maintaining a perfect 4.0 GPA throughout the medical program and demonstrating exceptional clinical skills and professionalism.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Awards Grid -->
+                <div id="awardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 animate-slide-up delay-5">
+                    <!-- Will be populated dynamically -->
+                </div>
+            `;
+            
+            // Set up awards grid with all awards
+            updateAwardsGrid('all');
+            
+            // Set up category filter
+            const awardCategoryFilter = document.getElementById('awardCategoryFilter');
+            awardCategoryFilter.addEventListener('change', function() {
+                updateAwardsGrid(this.value);
+            });
+        }
+        
+        function updateAwardsGrid(categoryFilter) {
+            const awardsGrid = document.getElementById('awardsGrid');
+            
+            // Filter awards based on selected category
+            let filteredAwards;
+            
+            if (categoryFilter === 'all') {
+                filteredAwards = studentData.awards;
+            } else {
+                filteredAwards = studentData.awards.filter(a => a.category === categoryFilter);
+            }
+            
+            // Build awards grid
+            awardsGrid.innerHTML = filteredAwards.map((award, index) => `
+                <div class="award-card card p-6 hover:shadow-lg transition-all duration-300 group animate-fade-in" style="animation-delay: ${0.05 * index}s">
+                    <div class="hidden group-hover:block absolute inset-0 overflow-hidden rounded-xl">
+                        <div class="award-shimmer absolute inset-0"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-3">
+                            <div class="award-icon w-14 h-14 rounded-xl award-${award.color} flex items-center justify-center text-white mr-3 shadow-md">
+                                <i class="fas fa-${award.icon} text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 dark:text-white">${award.name}</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">${award.date}</p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <span class="inline-block px-2.5 py-1 text-xs rounded-full text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700">
+                                ${award.category}
+                            </span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">${award.description}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            // If no awards match the filter
+            if (filteredAwards.length === 0) {
+                awardsGrid.innerHTML = `
+                    <div class="col-span-full text-center py-8 text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-info-circle text-4xl mb-3"></i>
+                        <p>No awards found for the selected category.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Helper function to get color class for award category
+        function getCategoryColorClass(category) {
+            const colorMap = {
+                'Academic Excellence': 'bg-gradient-to-r from-bcm-gold to-amber-400',
+                'Research': 'bg-gradient-to-r from-bcm-blue to-bcm-accent',
+                'Clinical Excellence': 'bg-gradient-to-r from-green-500 to-emerald-400',
+                'Leadership': 'bg-gradient-to-r from-purple-500 to-violet-400',
+                'Service': 'bg-gradient-to-r from-red-500 to-rose-400',
+                'Innovation': 'bg-gradient-to-r from-blue-500 to-cyan-400'
+            };
+            
+            return colorMap[category] || 'bg-gray-500';
+        }
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            setupNavigation();
+        });
+    </script>
 </body>
+</html>
